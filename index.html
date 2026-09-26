@@ -21,7 +21,7 @@
 
     header {
       background: #111;
-      color: white;
+      color: #fff;
       padding: 22px 18px;
       text-align: center;
     }
@@ -60,7 +60,7 @@
     .whatsapp {
       display: inline-block;
       background: #111;
-      color: white;
+      color: #fff;
       text-decoration: none;
       padding: 14px 28px;
       border-radius: 4px;
@@ -97,7 +97,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
-      max-width: 420px;
+      max-width: 430px;
       margin: auto;
     }
 
@@ -106,6 +106,7 @@
       padding: 12px;
       border: 1px solid #e5e0d8;
       text-align: right;
+      border-radius: 5px;
     }
 
     .product img {
@@ -113,8 +114,8 @@
       height: 330px;
       object-fit: cover;
       display: block;
-      margin-bottom: 15px;
-      border-radius: 3px;
+      margin-bottom: 18px;
+      border-radius: 4px;
     }
 
     .product h3 {
@@ -138,13 +139,13 @@
     .price {
       font-size: 22px;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .colors-title {
       font-size: 15px;
-      margin-bottom: 10px;
       font-weight: bold;
+      margin-bottom: 10px;
     }
 
     .colors {
@@ -154,9 +155,10 @@
     }
 
     .color-btn {
+      flex: 1;
       border: 1px solid #ccc;
       background: white;
-      padding: 8px 13px;
+      padding: 10px 5px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 14px;
@@ -174,7 +176,6 @@
       text-decoration: none;
       text-align: center;
       padding: 13px;
-      margin-top: 10px;
       border-radius: 4px;
       font-size: 16px;
     }
@@ -212,6 +213,7 @@
   </header>
 
   <section class="hero">
+
     <h1>اختاري أناقتك مع باريس</h1>
 
     <p>
@@ -224,6 +226,7 @@
        target="_blank">
       تواصلي معنا على واتساب
     </a>
+
   </section>
 
   <section class="section">
@@ -265,13 +268,13 @@
       <div class="product">
 
         <img id="shoeImage"
-             src="IMG_0993.png"
+             src="IMG_0991.png"
              alt="شوز طبي سيليكون">
 
         <h3>شوز طبي سيليكون</h3>
 
         <p class="description">
-          مريح جدًا وخفيف، مناسب للاستخدام اليومي
+          مريح جدًا وخفيف ومناسب للاستخدام اليومي
         </p>
 
         <p class="sizes">
@@ -288,27 +291,31 @@
 
         <div class="colors">
 
-        <button class="color-btn active"
-        onclick="changeColor('IMG_0991.png', this)">
-  هافان
-</button>
+          <button
+            class="color-btn active"
+            onclick="changeColor('IMG_0991.png', 'هافان', this)">
+            هافان
+          </button>
 
-<button class="color-btn"
-        onclick="changeColor('IMG_0993.png', this)">
-  كافيه
-</button>
+          <button
+            class="color-btn"
+            onclick="changeColor('IMG_0993.png', 'كافيه', this)">
+            كافيه
+          </button>
 
-<button class="color-btn"
-        onclick="changeColor('IMG_0992.png', this)">
-  أسود
-</button>
+          <button
+            class="color-btn"
+            onclick="changeColor('IMG_0992.png', 'أسود', this)">
+            أسود
+          </button>
 
         </div>
 
-        <a id="orderButton"
-           class="order"
-           href="https://wa.me/201098251580?text=أريد%20طلب%20الشوز%20الطبي%20السيليكون%20باللون%20الهافان%20مقاس%2039"
-           target="_blank">
+        <a
+          id="orderButton"
+          class="order"
+          href="https://wa.me/201098251580?text=أريد%20طلب%20الشوز%20الطبي%20السيليكون%20باللون%20الهافان"
+          target="_blank">
           اطلب الآن عبر واتساب
         </a>
 
@@ -335,7 +342,7 @@
 
   <script>
 
-    function changeColor(image, button) {
+    function changeColor(image, color, button) {
 
       document.getElementById("shoeImage").src = image;
 
@@ -345,15 +352,11 @@
 
       button.classList.add("active");
 
-      let color = button.innerText;
-
       let message =
-        "أريد طلب الشوز الطبي السيليكون باللون " +
-        color +
-        " مقاس ";
+        "أريد طلب الشوز الطبي السيليكون باللون " + color;
 
       document.getElementById("orderButton").href =
-        "https://wa.me/201098251580?text=" +
+        "https://wa.me/2010982512580?text=" +
         encodeURIComponent(message);
     }
 
