@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PARIS SHOES & BAGS</title>
 
 <style>
@@ -191,6 +190,7 @@ button{
   object-fit:cover;
   display:block;
   background:#f3f3f3;
+  cursor:pointer;
 }
 
 .favorite{
@@ -272,8 +272,6 @@ button{
   color:#777;
   grid-column:1/-1;
 }
-
-/* MODALS */
 
 .overlay{
   position:fixed;
@@ -403,8 +401,6 @@ button{
   font-size:15px;
 }
 
-/* CART */
-
 .cart-list{
   padding:20px;
 }
@@ -481,8 +477,6 @@ button{
   font-weight:bold;
 }
 
-/* CHECKOUT */
-
 .form{
   padding:20px;
 }
@@ -556,8 +550,6 @@ button{
   font-weight:bold;
   margin-top:15px;
 }
-
-/* FOOTER */
 
 .footer{
   background:#111;
@@ -640,28 +632,22 @@ button{
 
 <header class="header">
   <div class="header-inner">
-
     <div class="logo">
       PARIS
       <span>SHOES & BAGS</span>
     </div>
 
     <div class="header-actions">
-
       <button class="icon-btn" onclick="openCart()">
         🛒
         <span class="cart-count" id="cartCount">0</span>
       </button>
-
     </div>
   </div>
 </header>
 
-
 <section class="hero">
-
   <h1>PARIS</h1>
-
   <p>اختاري أناقتك مع باريس</p>
 
   <button
@@ -670,40 +656,18 @@ button{
   >
     تسوقي الآن
   </button>
-
 </section>
-
 
 <main class="container" id="productsSection">
 
   <div class="categories">
-
-    <button class="cat-btn active" onclick="filterCategory('all',this)">
-      الكل
-    </button>
-
-    <button class="cat-btn" onclick="filterCategory('shoes',this)">
-      أحذية
-    </button>
-
-    <button class="cat-btn" onclick="filterCategory('medical',this)">
-      طبي
-    </button>
-
-    <button class="cat-btn" onclick="filterCategory('bags',this)">
-      شنط
-    </button>
-
-    <button class="cat-btn" onclick="filterCategory('discount',this)">
-      خصومات
-    </button>
-
-    <button class="cat-btn" onclick="filterCategory('new',this)">
-      جديد
-    </button>
-
+    <button class="cat-btn active" onclick="filterCategory('all',this)">الكل</button>
+    <button class="cat-btn" onclick="filterCategory('shoes',this)">أحذية</button>
+    <button class="cat-btn" onclick="filterCategory('medical',this)">طبي</button>
+    <button class="cat-btn" onclick="filterCategory('bags',this)">شنط</button>
+    <button class="cat-btn" onclick="filterCategory('discount',this)">خصومات</button>
+    <button class="cat-btn" onclick="filterCategory('new',this)">جديد</button>
   </div>
-
 
   <input
     class="search"
@@ -713,31 +677,20 @@ button{
     oninput="searchProducts()"
   >
 
-
   <div class="section-title">
     <h2>منتجات باريس</h2>
   </div>
-
 
   <div class="products" id="productsGrid"></div>
 
 </main>
 
-
 <footer class="footer">
-
-  <div class="footer-logo">
-    PARIS
-  </div>
-
+  <div class="footer-logo">PARIS</div>
   <p>SHOES & BAGS</p>
-
   <p>📍 شارع إسكندرية - مرسى مطروح</p>
-
   <p>🚚 متاح توصيل لأي مكان في مصر</p>
-
 </footer>
-
 
 <a
   class="whatsapp-float"
@@ -746,9 +699,6 @@ button{
 >
   ☎
 </a>
-
-
-<!-- PRODUCT -->
 
 <div class="overlay" id="productOverlay">
 
@@ -773,52 +723,23 @@ button{
 
       <div class="price" id="modalPrice"></div>
 
+      <div class="option-title">اختاري اللون</div>
 
-      <div class="option-title">
-        اختاري اللون
-      </div>
+      <div class="options" id="colorOptions"></div>
 
-      <div
-        class="options"
-        id="colorOptions"
-      ></div>
+      <div class="option-title">اختاري المقاس</div>
 
-
-      <div class="option-title">
-        اختاري المقاس
-      </div>
-
-      <div
-        class="options"
-        id="sizeOptions"
-      ></div>
-
+      <div class="options" id="sizeOptions"></div>
 
       <div class="qty-row">
 
-        <button
-          class="qty-btn"
-          onclick="changeQty(-1)"
-        >
-          −
-        </button>
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
 
-        <div
-          class="qty-number"
-          id="qtyNumber"
-        >
-          1
-        </div>
+        <div class="qty-number" id="qtyNumber">1</div>
 
-        <button
-          class="qty-btn"
-          onclick="changeQty(1)"
-        >
-          +
-        </button>
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
 
       </div>
-
 
       <button
         class="add-btn"
@@ -828,25 +749,14 @@ button{
       </button>
 
     </div>
-
   </div>
-
 </div>
-
-
-<!-- CART -->
 
 <div class="overlay" id="cartOverlay">
 
   <div class="modal">
 
-    <button
-      class="close"
-      onclick="closeCart()"
-    >
-      ×
-    </button>
-
+    <button class="close" onclick="closeCart()">×</button>
 
     <div class="cart-list">
 
@@ -854,13 +764,7 @@ button{
         سلة المشتريات
       </h2>
 
-      <p
-        style="
-          color:#777;
-          font-size:13px;
-          margin-bottom:10px;
-        "
-      >
+      <p style="color:#777;font-size:13px;margin-bottom:10px;">
         المنتجات المختارة
       </p>
 
@@ -868,19 +772,10 @@ button{
 
     </div>
 
-
     <div class="total-box">
-
-      <span>
-        الإجمالي
-      </span>
-
-      <span id="cartTotal">
-        0 جنيه
-      </span>
-
+      <span>الإجمالي</span>
+      <span id="cartTotal">0 جنيه</span>
     </div>
-
 
     <button
       class="checkout-btn"
@@ -890,40 +785,21 @@ button{
     </button>
 
   </div>
-
 </div>
-
-
-<!-- CHECKOUT -->
 
 <div class="overlay" id="checkoutOverlay">
 
   <div class="modal">
 
-    <button
-      class="close"
-      onclick="closeCheckout()"
-    >
-      ×
-    </button>
-
+    <button class="close" onclick="closeCheckout()">×</button>
 
     <div class="form">
 
-      <h2>
-        تأكيد الطلب
-      </h2>
+      <h2>تأكيد الطلب</h2>
 
+      <div class="summary" id="checkoutSummary"></div>
 
-      <div
-        class="summary"
-        id="checkoutSummary"
-      ></div>
-
-
-      <label>
-        الاسم
-      </label>
+      <label>الاسم</label>
 
       <input
         id="customerName"
@@ -931,10 +807,7 @@ button{
         placeholder="اكتب الاسم"
       >
 
-
-      <label>
-        رقم الموبايل
-      </label>
+      <label>رقم الموبايل</label>
 
       <input
         id="customerPhone"
@@ -942,17 +815,11 @@ button{
         placeholder="01xxxxxxxxx"
       >
 
-
-      <label>
-        المحافظة
-      </label>
+      <label>المحافظة</label>
 
       <select id="customerGovernorate">
 
-        <option value="">
-          اختار المحافظة
-        </option>
-
+        <option value="">اختار المحافظة</option>
         <option>مطروح</option>
         <option>الإسكندرية</option>
         <option>القاهرة</option>
@@ -983,26 +850,19 @@ button{
 
       </select>
 
-
-      <label>
-        العنوان بالتفصيل
-      </label>
+      <label>العنوان بالتفصيل</label>
 
       <textarea
         id="customerAddress"
         placeholder="المنطقة - الشارع - رقم المنزل..."
       ></textarea>
 
-
-      <label>
-        ملاحظات
-      </label>
+      <label>ملاحظات</label>
 
       <textarea
         id="customerNotes"
         placeholder="أي ملاحظات إضافية للطلب"
       ></textarea>
-
 
       <button
         class="send-btn"
@@ -1012,33 +872,25 @@ button{
       </button>
 
     </div>
-
   </div>
-
 </div>
-
 
 <script>
 
 /* ==============================
-   إعدادات الموقع
+   الإعدادات
 ============================== */
 
-const SITE_URL =
-"https://mnntpk6tkd-droid.github.io/Paris---shoes---bags/";
-
-const WHATSAPP =
-"201098251580";
+const WHATSAPP = "201098251580";
 
 
 /* ==============================
-   تحويل اسم الصورة لرابط كامل
+   الصور
+   الصور موجودة بجوار index.html
 ============================== */
 
 function imageURL(file){
-
-  return SITE_URL + file;
-
+  return "./" + file;
 }
 
 
@@ -1050,11 +902,8 @@ const products = [
 
   {
     id:1,
-
     code:"A1",
-
     name:"شوز طبي سيليكون",
-
     category:"medical",
 
     tags:[
@@ -1068,20 +917,17 @@ const products = [
 
     price:550,
 
-    image:
-      imageURL("IMG_0991.png"),
+    image:imageURL("IMG_0991.png"),
 
     colors:[
       {
         name:"هافان",
         image:imageURL("IMG_0991.png")
       },
-
       {
         name:"كافيه",
         image:imageURL("IMG_0993.png")
       },
-
       {
         name:"أسود",
         image:imageURL("IMG_0992.png")
@@ -1102,11 +948,8 @@ const products = [
 
   {
     id:2,
-
     code:"A2",
-
     name:"شوز طبي",
-
     category:"medical",
 
     tags:[
@@ -1119,20 +962,17 @@ const products = [
 
     price:550,
 
-    image:
-      imageURL("IMG_098.png"),
+    image:imageURL("IMG_098.png"),
 
     colors:[
       {
         name:"بيج",
         image:imageURL("IMG_098.png")
       },
-
       {
         name:"أسود",
         image:imageURL("IMG_099.png")
       },
-
       {
         name:"كافيه",
         image:imageURL("IMG_1001.png")
@@ -1158,17 +998,11 @@ const products = [
 ============================== */
 
 let currentProduct = null;
-
 let currentColor = null;
-
 let currentSize = null;
-
 let currentQty = 1;
-
 let cart = [];
-
 let favorites = [];
-
 let currentCategory = "all";
 
 
@@ -1181,7 +1015,6 @@ function renderProducts(list = products){
   const grid =
     document.getElementById("productsGrid");
 
-
   if(!list.length){
 
     grid.innerHTML =
@@ -1191,7 +1024,6 @@ function renderProducts(list = products){
 
     return;
   }
-
 
   grid.innerHTML = list.map(product => `
 
@@ -1212,20 +1044,16 @@ function renderProducts(list = products){
         }
       </button>
 
-
       <div class="badge">
         ${product.badge}
       </div>
-
 
       <img
         class="product-image"
         src="${product.image}"
         alt="${product.name}"
         onclick="openProduct(${product.id})"
-        onerror="this.style.display='none';"
       >
-
 
       <div class="product-info">
 
@@ -1233,23 +1061,19 @@ function renderProducts(list = products){
           كود المنتج: ${product.code}
         </div>
 
-
         <div class="product-name">
           ${product.name}
         </div>
 
-
         <div class="product-desc">
           ${product.description}
         </div>
-
 
         <div class="product-bottom">
 
           <div class="price">
             ${product.price} جنيه
           </div>
-
 
           <button
             class="view-btn"
@@ -1277,19 +1101,15 @@ function filterCategory(category,button){
 
   currentCategory = category;
 
-
   document
     .querySelectorAll(".cat-btn")
     .forEach(btn =>
       btn.classList.remove("active")
     );
 
-
   button.classList.add("active");
 
-
   applyFilters();
-
 }
 
 
@@ -1298,9 +1118,7 @@ function filterCategory(category,button){
 ============================== */
 
 function searchProducts(){
-
   applyFilters();
-
 }
 
 
@@ -1313,12 +1131,10 @@ function applyFilters(){
       .trim()
       .toLowerCase();
 
-
   const filtered =
     products.filter(product => {
 
       let categoryMatch = true;
-
 
       if(currentCategory !== "all"){
 
@@ -1344,9 +1160,7 @@ function applyFilters(){
             );
 
         }
-
       }
-
 
       const text =
         (
@@ -1357,20 +1171,16 @@ function applyFilters(){
           product.description
         ).toLowerCase();
 
-
       const searchMatch =
         !search ||
         text.includes(search);
-
 
       return categoryMatch &&
              searchMatch;
 
     });
 
-
   renderProducts(filtered);
-
 }
 
 
@@ -1381,7 +1191,6 @@ function applyFilters(){
 function toggleFavorite(id,event){
 
   event.stopPropagation();
-
 
   if(favorites.includes(id)){
 
@@ -1396,9 +1205,7 @@ function toggleFavorite(id,event){
 
   }
 
-
   applyFilters();
-
 }
 
 
@@ -1413,56 +1220,43 @@ function openProduct(id){
       product => product.id === id
     );
 
-
   if(!currentProduct)
     return;
-
 
   currentColor =
     currentProduct.colors[0];
 
-
   currentSize = null;
-
   currentQty = 1;
-
 
   document.getElementById("modalTitle")
     .textContent =
       currentProduct.name;
-
 
   document.getElementById("modalCode")
     .textContent =
       "كود المنتج: " +
       currentProduct.code;
 
-
   document.getElementById("modalDesc")
     .textContent =
       currentProduct.description;
-
 
   document.getElementById("modalPrice")
     .textContent =
       currentProduct.price +
       " جنيه";
 
-
   document.getElementById("qtyNumber")
     .textContent =
       currentQty;
 
-
   renderColorOptions();
-
   renderSizeOptions();
-
 
   document
     .getElementById("productOverlay")
     .classList.add("show");
-
 }
 
 
@@ -1485,7 +1279,6 @@ function renderColorOptions(){
     .src =
       currentColor.image;
 
-
   document.getElementById("colorOptions")
     .innerHTML =
 
@@ -1505,7 +1298,6 @@ function renderColorOptions(){
 
         `)
         .join("");
-
 }
 
 
@@ -1513,7 +1305,6 @@ function selectColor(index){
 
   currentColor =
     currentProduct.colors[index];
-
 
   renderColorOptions();
 
@@ -1545,7 +1336,6 @@ function renderSizeOptions(){
 
         `)
         .join("");
-
 }
 
 
@@ -1566,19 +1356,15 @@ function changeQty(amount){
 
   currentQty += amount;
 
-
   if(currentQty < 1)
     currentQty = 1;
-
 
   if(currentQty > 20)
     currentQty = 20;
 
-
   document.getElementById("qtyNumber")
     .textContent =
       currentQty;
-
 }
 
 
@@ -1591,7 +1377,6 @@ function addCurrentProductToCart(){
   if(!currentProduct)
     return;
 
-
   if(!currentSize){
 
     alert("اختار المقاس الأول 👟");
@@ -1599,21 +1384,14 @@ function addCurrentProductToCart(){
     return;
   }
 
-
   const existing =
     cart.find(item =>
 
-      item.productId ===
-      currentProduct.id &&
-
-      item.color ===
-      currentColor.name &&
-
-      item.size ===
-      currentSize
+      item.productId === currentProduct.id &&
+      item.color === currentColor.name &&
+      item.size === currentSize
 
     );
-
 
   if(existing){
 
@@ -1653,11 +1431,8 @@ function addCurrentProductToCart(){
 
   }
 
-
   updateCartCount();
-
   closeProduct();
-
   openCart();
 
 }
@@ -1676,18 +1451,15 @@ function updateCartCount(){
       0
     );
 
-
   document.getElementById("cartCount")
     .textContent =
       count;
-
 }
 
 
 function openCart(){
 
   renderCart();
-
 
   document
     .getElementById("cartOverlay")
@@ -1710,7 +1482,6 @@ function renderCart(){
   const list =
     document.getElementById("cartList");
 
-
   if(!cart.length){
 
     list.innerHTML =
@@ -1718,15 +1489,12 @@ function renderCart(){
         السلة فاضية 🛒
       </div>`;
 
-
     document.getElementById("cartTotal")
       .textContent =
         "0 جنيه";
 
-
     return;
   }
-
 
   list.innerHTML =
 
@@ -1740,18 +1508,15 @@ function renderCart(){
           alt="${item.name}"
         >
 
-
         <div class="cart-info">
 
           <div class="cart-code">
             ${item.code}
           </div>
 
-
           <div class="cart-name">
             ${item.name}
           </div>
-
 
           <div class="cart-details">
             اللون: ${item.color}<br>
@@ -1760,7 +1525,6 @@ function renderCart(){
           </div>
 
         </div>
-
 
         <div>
 
@@ -1771,7 +1535,6 @@ function renderCart(){
             }
             جنيه
           </div>
-
 
           <button
             class="delete-btn"
@@ -1786,12 +1549,10 @@ function renderCart(){
 
     `).join("");
 
-
   document.getElementById("cartTotal")
     .textContent =
       getCartTotal() +
       " جنيه";
-
 }
 
 
@@ -1800,7 +1561,6 @@ function removeFromCart(index){
   cart.splice(index,1);
 
   updateCartCount();
-
   renderCart();
 
 }
@@ -1834,11 +1594,8 @@ function openCheckout(){
     return;
   }
 
-
   renderCheckoutSummary();
-
   closeCart();
-
 
   document
     .getElementById("checkoutOverlay")
@@ -1863,7 +1620,6 @@ function renderCheckoutSummary(){
       "checkoutSummary"
     );
 
-
   summary.innerHTML = `
 
     <div
@@ -1875,7 +1631,6 @@ function renderCheckoutSummary(){
       تفاصيل الطلب
     </div>
 
-
     ${
       cart.map(item => `
 
@@ -1886,7 +1641,6 @@ function renderCheckoutSummary(){
             src="${item.image}"
             alt="${item.name}"
           >
-
 
           <div class="summary-text">
 
@@ -1926,7 +1680,6 @@ function renderCheckoutSummary(){
       `).join("")
     }
 
-
     <div
       style="
         text-align:center;
@@ -1940,7 +1693,6 @@ function renderCheckoutSummary(){
     </div>
 
   `;
-
 }
 
 
@@ -1957,13 +1709,11 @@ function sendOrder(){
     return;
   }
 
-
   const name =
     document
       .getElementById("customerName")
       .value
       .trim();
-
 
   const phone =
     document
@@ -1971,12 +1721,10 @@ function sendOrder(){
       .value
       .trim();
 
-
   const governorate =
     document
       .getElementById("customerGovernorate")
       .value;
-
 
   const address =
     document
@@ -1984,45 +1732,35 @@ function sendOrder(){
       .value
       .trim();
 
-
   const notes =
     document
       .getElementById("customerNotes")
       .value
       .trim();
 
-
   if(!name){
 
     alert("اكتب الاسم");
-
     return;
   }
-
 
   if(!phone){
 
     alert("اكتب رقم الموبايل");
-
     return;
   }
-
 
   if(!governorate){
 
     alert("اختار المحافظة");
-
     return;
   }
-
 
   if(!address){
 
     alert("اكتب العنوان");
-
     return;
   }
-
 
   let message =
 
@@ -2030,7 +1768,6 @@ function sendOrder(){
 
 📦 تفاصيل الطلب:
 `;
-
 
   cart.forEach((item,index) => {
 
@@ -2046,11 +1783,10 @@ ${index + 1}) ${item.code} — ${item.name}
     } جنيه
 
 🖼️ صورة المنتج:
-${item.image}
+${window.location.origin}${window.location.pathname}${item.image.replace("./","")}
 `;
 
   });
-
 
   message += `
 
@@ -2076,19 +1812,16 @@ PARIS SHOES & BAGS
 📍 شارع إسكندرية - مرسى مطروح
 `;
 
-
   const url =
     "https://wa.me/" +
     WHATSAPP +
     "?text=" +
     encodeURIComponent(message);
 
-
   window.open(
     url,
     "_blank"
   );
-
 }
 
 
@@ -2097,7 +1830,6 @@ PARIS SHOES & BAGS
 ============================== */
 
 renderProducts();
-
 updateCartCount();
 
 </script>
