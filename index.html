@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PARIS SHOES & BAGS</title>
 
 <style>
@@ -42,7 +43,6 @@ button{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
 }
 
 .logo{
@@ -163,9 +163,6 @@ button{
 }
 
 .section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
   margin-bottom:18px;
 }
 
@@ -276,7 +273,7 @@ button{
   grid-column:1/-1;
 }
 
-/* modal */
+/* MODALS */
 
 .overlay{
   position:fixed;
@@ -406,11 +403,7 @@ button{
   font-size:15px;
 }
 
-.gold{
-  color:#9b7b17;
-}
-
-/* cart */
+/* CART */
 
 .cart-list{
   padding:20px;
@@ -488,7 +481,7 @@ button{
   font-weight:bold;
 }
 
-/* checkout */
+/* CHECKOUT */
 
 .form{
   padding:20px;
@@ -564,7 +557,7 @@ button{
   margin-top:15px;
 }
 
-/* footer */
+/* FOOTER */
 
 .footer{
   background:#111;
@@ -640,17 +633,6 @@ button{
     padding:8px 9px;
   }
 }
-
-@media(max-width:380px){
-  .products{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .cart-thumb{
-    width:65px;
-    height:65px;
-  }
-}
 </style>
 </head>
 
@@ -665,33 +647,63 @@ button{
     </div>
 
     <div class="header-actions">
+
       <button class="icon-btn" onclick="openCart()">
         🛒
         <span class="cart-count" id="cartCount">0</span>
       </button>
-    </div>
 
+    </div>
   </div>
 </header>
 
+
 <section class="hero">
+
   <h1>PARIS</h1>
+
   <p>اختاري أناقتك مع باريس</p>
-  <button class="hero-btn" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">
+
+  <button
+    class="hero-btn"
+    onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})"
+  >
     تسوقي الآن
   </button>
+
 </section>
+
 
 <main class="container" id="productsSection">
 
   <div class="categories">
-    <button class="cat-btn active" onclick="filterCategory('all',this)">الكل</button>
-    <button class="cat-btn" onclick="filterCategory('shoes',this)">أحذية</button>
-    <button class="cat-btn" onclick="filterCategory('medical',this)">طبي</button>
-    <button class="cat-btn" onclick="filterCategory('bags',this)">شنط</button>
-    <button class="cat-btn" onclick="filterCategory('discount',this)">خصومات</button>
-    <button class="cat-btn" onclick="filterCategory('new',this)">جديد</button>
+
+    <button class="cat-btn active" onclick="filterCategory('all',this)">
+      الكل
+    </button>
+
+    <button class="cat-btn" onclick="filterCategory('shoes',this)">
+      أحذية
+    </button>
+
+    <button class="cat-btn" onclick="filterCategory('medical',this)">
+      طبي
+    </button>
+
+    <button class="cat-btn" onclick="filterCategory('bags',this)">
+      شنط
+    </button>
+
+    <button class="cat-btn" onclick="filterCategory('discount',this)">
+      خصومات
+    </button>
+
+    <button class="cat-btn" onclick="filterCategory('new',this)">
+      جديد
+    </button>
+
   </div>
+
 
   <input
     class="search"
@@ -701,20 +713,31 @@ button{
     oninput="searchProducts()"
   >
 
+
   <div class="section-title">
     <h2>منتجات باريس</h2>
   </div>
+
 
   <div class="products" id="productsGrid"></div>
 
 </main>
 
+
 <footer class="footer">
-  <div class="footer-logo">PARIS</div>
+
+  <div class="footer-logo">
+    PARIS
+  </div>
+
   <p>SHOES & BAGS</p>
+
   <p>📍 شارع إسكندرية - مرسى مطروح</p>
+
   <p>🚚 متاح توصيل لأي مكان في مصر</p>
+
 </footer>
+
 
 <a
   class="whatsapp-float"
@@ -725,14 +748,20 @@ button{
 </a>
 
 
-<!-- PRODUCT MODAL -->
+<!-- PRODUCT -->
 
 <div class="overlay" id="productOverlay">
+
   <div class="modal">
 
     <button class="close" onclick="closeProduct()">×</button>
 
-    <img id="modalImage" class="modal-image" src="" alt="product">
+    <img
+      id="modalImage"
+      class="modal-image"
+      src=""
+      alt="product"
+    >
 
     <div class="modal-content">
 
@@ -744,38 +773,94 @@ button{
 
       <div class="price" id="modalPrice"></div>
 
-      <div class="option-title">اختاري اللون</div>
-      <div class="options" id="colorOptions"></div>
 
-      <div class="option-title">اختاري المقاس</div>
-      <div class="options" id="sizeOptions"></div>
-
-      <div class="qty-row">
-        <button class="qty-btn" onclick="changeQty(-1)">−</button>
-        <div class="qty-number" id="qtyNumber">1</div>
-        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      <div class="option-title">
+        اختاري اللون
       </div>
 
-      <button class="add-btn" onclick="addCurrentProductToCart()">
+      <div
+        class="options"
+        id="colorOptions"
+      ></div>
+
+
+      <div class="option-title">
+        اختاري المقاس
+      </div>
+
+      <div
+        class="options"
+        id="sizeOptions"
+      ></div>
+
+
+      <div class="qty-row">
+
+        <button
+          class="qty-btn"
+          onclick="changeQty(-1)"
+        >
+          −
+        </button>
+
+        <div
+          class="qty-number"
+          id="qtyNumber"
+        >
+          1
+        </div>
+
+        <button
+          class="qty-btn"
+          onclick="changeQty(1)"
+        >
+          +
+        </button>
+
+      </div>
+
+
+      <button
+        class="add-btn"
+        onclick="addCurrentProductToCart()"
+      >
         إضافة للسلة 🛒
       </button>
 
     </div>
+
   </div>
+
 </div>
 
 
-<!-- CART MODAL -->
+<!-- CART -->
 
 <div class="overlay" id="cartOverlay">
+
   <div class="modal">
 
-    <button class="close" onclick="closeCart()">×</button>
+    <button
+      class="close"
+      onclick="closeCart()"
+    >
+      ×
+    </button>
+
 
     <div class="cart-list">
 
-      <h2 style="margin-bottom:8px;">سلة المشتريات</h2>
-      <p style="color:#777;font-size:13px;margin-bottom:10px;">
+      <h2 style="margin-bottom:8px;">
+        سلة المشتريات
+      </h2>
+
+      <p
+        style="
+          color:#777;
+          font-size:13px;
+          margin-bottom:10px;
+        "
+      >
         المنتجات المختارة
       </p>
 
@@ -783,41 +868,91 @@ button{
 
     </div>
 
+
     <div class="total-box">
-      <span>الإجمالي</span>
-      <span id="cartTotal">0 جنيه</span>
+
+      <span>
+        الإجمالي
+      </span>
+
+      <span id="cartTotal">
+        0 جنيه
+      </span>
+
     </div>
 
-    <button class="checkout-btn" onclick="openCheckout()">
+
+    <button
+      class="checkout-btn"
+      onclick="openCheckout()"
+    >
       متابعة الطلب
     </button>
 
   </div>
+
 </div>
 
 
-<!-- CHECKOUT MODAL -->
+<!-- CHECKOUT -->
 
 <div class="overlay" id="checkoutOverlay">
+
   <div class="modal">
 
-    <button class="close" onclick="closeCheckout()">×</button>
+    <button
+      class="close"
+      onclick="closeCheckout()"
+    >
+      ×
+    </button>
+
 
     <div class="form">
 
-      <h2>تأكيد الطلب</h2>
+      <h2>
+        تأكيد الطلب
+      </h2>
 
-      <div class="summary" id="checkoutSummary"></div>
 
-      <label>الاسم</label>
-      <input id="customerName" type="text" placeholder="اكتب الاسم">
+      <div
+        class="summary"
+        id="checkoutSummary"
+      ></div>
 
-      <label>رقم الموبايل</label>
-      <input id="customerPhone" type="tel" placeholder="01xxxxxxxxx">
 
-      <label>المحافظة</label>
+      <label>
+        الاسم
+      </label>
+
+      <input
+        id="customerName"
+        type="text"
+        placeholder="اكتب الاسم"
+      >
+
+
+      <label>
+        رقم الموبايل
+      </label>
+
+      <input
+        id="customerPhone"
+        type="tel"
+        placeholder="01xxxxxxxxx"
+      >
+
+
+      <label>
+        المحافظة
+      </label>
+
       <select id="customerGovernorate">
-        <option value="">اختار المحافظة</option>
+
+        <option value="">
+          اختار المحافظة
+        </option>
+
         <option>مطروح</option>
         <option>الإسكندرية</option>
         <option>القاهرة</option>
@@ -845,24 +980,49 @@ button{
         <option>شمال سيناء</option>
         <option>جنوب سيناء</option>
         <option>الوادي الجديد</option>
+
       </select>
 
-      <label>العنوان بالتفصيل</label>
-      <textarea id="customerAddress" placeholder="المنطقة - الشارع - رقم المنزل..."></textarea>
 
-      <label>ملاحظات</label>
-      <textarea id="customerNotes" placeholder="أي ملاحظات إضافية للطلب"></textarea>
+      <label>
+        العنوان بالتفصيل
+      </label>
 
-      <button class="send-btn" onclick="sendOrder()">
+      <textarea
+        id="customerAddress"
+        placeholder="المنطقة - الشارع - رقم المنزل..."
+      ></textarea>
+
+
+      <label>
+        ملاحظات
+      </label>
+
+      <textarea
+        id="customerNotes"
+        placeholder="أي ملاحظات إضافية للطلب"
+      ></textarea>
+
+
+      <button
+        class="send-btn"
+        onclick="sendOrder()"
+      >
         تأكيد الطلب عبر واتساب 📲
       </button>
 
     </div>
+
   </div>
+
 </div>
 
 
 <script>
+
+/* ==============================
+   إعدادات الموقع
+============================== */
 
 const SITE_URL =
 "https://mnntpk6tkd-droid.github.io/Paris---shoes---bags/";
@@ -871,41 +1031,70 @@ const WHATSAPP =
 "201098251580";
 
 
-/* =========================
-   PRODUCTS
-========================= */
+/* ==============================
+   تحويل اسم الصورة لرابط كامل
+============================== */
+
+function imageURL(file){
+
+  return SITE_URL + file;
+
+}
+
+
+/* ==============================
+   المنتجات
+============================== */
 
 const products = [
 
   {
     id:1,
-    code:"A1",
-    name:"شوز طبي سيليكون",
-    category:"medical",
-    tags:["shoes","medical","new"],
 
-    description:"خفيف ومريح جدًا، مناسب للاستخدام اليومي بتصميم شيك وفورمال.",
+    code:"A1",
+
+    name:"شوز طبي سيليكون",
+
+    category:"medical",
+
+    tags:[
+      "shoes",
+      "medical",
+      "new"
+    ],
+
+    description:
+      "خفيف ومريح جدًا، مناسب للاستخدام اليومي بتصميم شيك وفورمال.",
 
     price:550,
 
-    image:"IMG_0991.png",
+    image:
+      imageURL("IMG_0991.png"),
 
     colors:[
       {
         name:"هافان",
-        image:"IMG_0991.png"
+        image:imageURL("IMG_0991.png")
       },
+
       {
         name:"كافيه",
-        image:"IMG_0993.png"
+        image:imageURL("IMG_0993.png")
       },
+
       {
         name:"أسود",
-        image:"IMG_0992.png"
+        image:imageURL("IMG_0992.png")
       }
     ],
 
-    sizes:["39","40","41","42","43"],
+    sizes:[
+      "39",
+      "40",
+      "41",
+      "42",
+      "43"
+    ],
 
     badge:"جديد"
   },
@@ -913,33 +1102,50 @@ const products = [
 
   {
     id:2,
-    code:"A2",
-    name:"شوز طبي",
-    category:"medical",
-    tags:["shoes","medical"],
 
-    description:"شوز طبي مريح وخفيف، مناسب للاستخدام اليومي بتصميم عملي وشيك.",
+    code:"A2",
+
+    name:"شوز طبي",
+
+    category:"medical",
+
+    tags:[
+      "shoes",
+      "medical"
+    ],
+
+    description:
+      "شوز طبي مريح وخفيف، مناسب للاستخدام اليومي بتصميم عملي وشيك.",
 
     price:550,
 
-    image:"IMG_098.png",
+    image:
+      imageURL("IMG_098.png"),
 
     colors:[
       {
         name:"بيج",
-        image:"IMG_098.png"
+        image:imageURL("IMG_098.png")
       },
+
       {
         name:"أسود",
-        image:"IMG_099.png"
+        image:imageURL("IMG_099.png")
       },
+
       {
         name:"كافيه",
-        image:"IMG_1001.png"
+        image:imageURL("IMG_1001.png")
       }
     ],
 
-    sizes:["38","39","40","41","42"],
+    sizes:[
+      "38",
+      "39",
+      "40",
+      "41",
+      "42"
+    ],
 
     badge:"طبي"
   }
@@ -947,56 +1153,79 @@ const products = [
 ];
 
 
-/* =========================
-   STATE
-========================= */
+/* ==============================
+   المتغيرات
+============================== */
 
 let currentProduct = null;
+
 let currentColor = null;
+
 let currentSize = null;
+
 let currentQty = 1;
 
 let cart = [];
+
 let favorites = [];
 
 let currentCategory = "all";
 
 
-/* =========================
-   PRODUCTS RENDER
-========================= */
+/* ==============================
+   عرض المنتجات
+============================== */
 
 function renderProducts(list = products){
 
-  const grid = document.getElementById("productsGrid");
+  const grid =
+    document.getElementById("productsGrid");
+
 
   if(!list.length){
 
     grid.innerHTML =
-      `<div class="empty">مفيش منتجات مطابقة للبحث 🔍</div>`;
+      `<div class="empty">
+        مفيش منتجات مطابقة للبحث 🔍
+      </div>`;
 
     return;
   }
+
 
   grid.innerHTML = list.map(product => `
 
     <div class="product-card">
 
       <button
-        class="favorite ${favorites.includes(product.id) ? "active" : ""}"
+        class="favorite ${
+          favorites.includes(product.id)
+          ? "active"
+          : ""
+        }"
         onclick="toggleFavorite(${product.id},event)"
       >
-        ${favorites.includes(product.id) ? "♥" : "♡"}
+        ${
+          favorites.includes(product.id)
+          ? "♥"
+          : "♡"
+        }
       </button>
 
-      <div class="badge">${product.badge}</div>
+
+      <div class="badge">
+        ${product.badge}
+      </div>
+
 
       <img
         class="product-image"
         src="${product.image}"
         alt="${product.name}"
         onclick="openProduct(${product.id})"
+        onerror="this.style.display='none';"
       >
+
 
       <div class="product-info">
 
@@ -1004,19 +1233,23 @@ function renderProducts(list = products){
           كود المنتج: ${product.code}
         </div>
 
+
         <div class="product-name">
           ${product.name}
         </div>
 
+
         <div class="product-desc">
           ${product.description}
         </div>
+
 
         <div class="product-bottom">
 
           <div class="price">
             ${product.price} جنيه
           </div>
+
 
           <button
             class="view-btn"
@@ -1032,29 +1265,37 @@ function renderProducts(list = products){
     </div>
 
   `).join("");
+
 }
 
 
-/* =========================
-   CATEGORY
-========================= */
+/* ==============================
+   التصنيف
+============================== */
 
 function filterCategory(category,button){
 
   currentCategory = category;
 
-  document.querySelectorAll(".cat-btn")
-    .forEach(btn => btn.classList.remove("active"));
+
+  document
+    .querySelectorAll(".cat-btn")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
 
   button.classList.add("active");
 
+
   applyFilters();
+
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* ==============================
+   البحث
+============================== */
 
 function searchProducts(){
 
@@ -1066,112 +1307,160 @@ function searchProducts(){
 function applyFilters(){
 
   const search =
-    document.getElementById("searchInput")
+    document
+      .getElementById("searchInput")
       .value
       .trim()
       .toLowerCase();
 
-  let filtered = products.filter(product => {
 
-    let categoryMatch = true;
+  const filtered =
+    products.filter(product => {
 
-    if(currentCategory !== "all"){
+      let categoryMatch = true;
 
-      if(currentCategory === "new"){
-        categoryMatch = product.tags.includes("new");
+
+      if(currentCategory !== "all"){
+
+        if(currentCategory === "new"){
+
+          categoryMatch =
+            product.tags.includes("new");
+
+        }
+
+        else if(currentCategory === "discount"){
+
+          categoryMatch =
+            product.tags.includes("discount");
+
+        }
+
+        else{
+
+          categoryMatch =
+            product.tags.includes(
+              currentCategory
+            );
+
+        }
+
       }
 
-      else if(currentCategory === "discount"){
-        categoryMatch = product.tags.includes("discount");
-      }
 
-      else{
-        categoryMatch =
-          product.tags.includes(currentCategory);
-      }
-    }
+      const text =
+        (
+          product.name +
+          " " +
+          product.code +
+          " " +
+          product.description
+        ).toLowerCase();
 
-    const text =
-      (
-        product.name +
-        " " +
-        product.code +
-        " " +
-        product.description
-      ).toLowerCase();
 
-    const searchMatch =
-      !search || text.includes(search);
+      const searchMatch =
+        !search ||
+        text.includes(search);
 
-    return categoryMatch && searchMatch;
 
-  });
+      return categoryMatch &&
+             searchMatch;
+
+    });
+
 
   renderProducts(filtered);
 
 }
 
 
-/* =========================
-   FAVORITES
-========================= */
+/* ==============================
+   المفضلة
+============================== */
 
 function toggleFavorite(id,event){
 
   event.stopPropagation();
+
 
   if(favorites.includes(id)){
 
     favorites =
       favorites.filter(x => x !== id);
 
-  }else{
+  }
+
+  else{
 
     favorites.push(id);
 
   }
+
 
   applyFilters();
 
 }
 
 
-/* =========================
-   PRODUCT MODAL
-========================= */
+/* ==============================
+   فتح المنتج
+============================== */
 
 function openProduct(id){
 
   currentProduct =
-    products.find(product => product.id === id);
+    products.find(
+      product => product.id === id
+    );
 
-  if(!currentProduct) return;
+
+  if(!currentProduct)
+    return;
+
 
   currentColor =
     currentProduct.colors[0];
 
+
   currentSize = null;
+
   currentQty = 1;
 
-  document.getElementById("modalTitle").textContent =
-    currentProduct.name;
 
-  document.getElementById("modalCode").textContent =
-    "كود المنتج: " + currentProduct.code;
+  document.getElementById("modalTitle")
+    .textContent =
+      currentProduct.name;
 
-  document.getElementById("modalDesc").textContent =
-    currentProduct.description;
 
-  document.getElementById("modalPrice").textContent =
-    currentProduct.price + " جنيه";
+  document.getElementById("modalCode")
+    .textContent =
+      "كود المنتج: " +
+      currentProduct.code;
 
-  document.getElementById("qtyNumber").textContent =
-    currentQty;
+
+  document.getElementById("modalDesc")
+    .textContent =
+      currentProduct.description;
+
+
+  document.getElementById("modalPrice")
+    .textContent =
+      currentProduct.price +
+      " جنيه";
+
+
+  document.getElementById("qtyNumber")
+    .textContent =
+      currentQty;
+
 
   renderColorOptions();
+
   renderSizeOptions();
 
-  document.getElementById("productOverlay")
+
+  document
+    .getElementById("productOverlay")
     .classList.add("show");
 
 }
@@ -1179,36 +1468,43 @@ function openProduct(id){
 
 function closeProduct(){
 
-  document.getElementById("productOverlay")
+  document
+    .getElementById("productOverlay")
     .classList.remove("show");
 
 }
 
 
-/* =========================
-   COLORS
-========================= */
+/* ==============================
+   الألوان
+============================== */
 
 function renderColorOptions(){
 
-  document.getElementById("modalImage").src =
-    currentColor.image;
+  document.getElementById("modalImage")
+    .src =
+      currentColor.image;
 
-  document.getElementById("colorOptions").innerHTML =
-    currentProduct.colors.map((color,index) => `
 
-      <button
-        class="option ${
-          currentColor.name === color.name
-          ? "active"
-          : ""
-        }"
-        onclick="selectColor(${index})"
-      >
-        ${color.name}
-      </button>
+  document.getElementById("colorOptions")
+    .innerHTML =
 
-    `).join("");
+      currentProduct.colors
+        .map((color,index) => `
+
+          <button
+            class="option ${
+              currentColor.name === color.name
+              ? "active"
+              : ""
+            }"
+            onclick="selectColor(${index})"
+          >
+            ${color.name}
+          </button>
+
+        `)
+        .join("");
 
 }
 
@@ -1218,32 +1514,37 @@ function selectColor(index){
   currentColor =
     currentProduct.colors[index];
 
+
   renderColorOptions();
 
 }
 
 
-/* =========================
-   SIZES
-========================= */
+/* ==============================
+   المقاسات
+============================== */
 
 function renderSizeOptions(){
 
-  document.getElementById("sizeOptions").innerHTML =
-    currentProduct.sizes.map(size => `
+  document.getElementById("sizeOptions")
+    .innerHTML =
 
-      <button
-        class="option ${
-          currentSize === size
-          ? "active"
-          : ""
-        }"
-        onclick="selectSize('${size}')"
-      >
-        ${size}
-      </button>
+      currentProduct.sizes
+        .map(size => `
 
-    `).join("");
+          <button
+            class="option ${
+              currentSize === size
+              ? "active"
+              : ""
+            }"
+            onclick="selectSize('${size}')"
+          >
+            ${size}
+          </button>
+
+        `)
+        .join("");
 
 }
 
@@ -1257,47 +1558,60 @@ function selectSize(size){
 }
 
 
-/* =========================
-   QUANTITY
-========================= */
+/* ==============================
+   الكمية
+============================== */
 
 function changeQty(amount){
 
   currentQty += amount;
 
+
   if(currentQty < 1)
     currentQty = 1;
+
 
   if(currentQty > 20)
     currentQty = 20;
 
+
   document.getElementById("qtyNumber")
-    .textContent = currentQty;
+    .textContent =
+      currentQty;
 
 }
 
 
-/* =========================
-   ADD TO CART
-========================= */
+/* ==============================
+   إضافة للسلة
+============================== */
 
 function addCurrentProductToCart(){
 
   if(!currentProduct)
     return;
 
+
   if(!currentSize){
 
     alert("اختار المقاس الأول 👟");
-    return;
 
+    return;
   }
+
 
   const existing =
     cart.find(item =>
-      item.productId === currentProduct.id &&
-      item.color === currentColor.name &&
-      item.size === currentSize
+
+      item.productId ===
+      currentProduct.id &&
+
+      item.color ===
+      currentColor.name &&
+
+      item.size ===
+      currentSize
+
     );
 
 
@@ -1305,29 +1619,40 @@ function addCurrentProductToCart(){
 
     existing.quantity += currentQty;
 
-  }else{
+  }
+
+  else{
 
     cart.push({
 
-      productId:currentProduct.id,
+      productId:
+        currentProduct.id,
 
-      code:currentProduct.code,
+      code:
+        currentProduct.code,
 
-      name:currentProduct.name,
+      name:
+        currentProduct.name,
 
-      color:currentColor.name,
+      color:
+        currentColor.name,
 
-      size:currentSize,
+      size:
+        currentSize,
 
-      quantity:currentQty,
+      quantity:
+        currentQty,
 
-      price:currentProduct.price,
+      price:
+        currentProduct.price,
 
-      image:currentColor.image
+      image:
+        currentColor.image
 
     });
 
   }
+
 
   updateCartCount();
 
@@ -1338,20 +1663,23 @@ function addCurrentProductToCart(){
 }
 
 
-/* =========================
-   CART
-========================= */
+/* ==============================
+   السلة
+============================== */
 
 function updateCartCount(){
 
   const count =
     cart.reduce(
-      (total,item) => total + item.quantity,
+      (total,item) =>
+        total + item.quantity,
       0
     );
 
+
   document.getElementById("cartCount")
-    .textContent = count;
+    .textContent =
+      count;
 
 }
 
@@ -1360,7 +1688,9 @@ function openCart(){
 
   renderCart();
 
-  document.getElementById("cartOverlay")
+
+  document
+    .getElementById("cartOverlay")
     .classList.add("show");
 
 }
@@ -1368,7 +1698,8 @@ function openCart(){
 
 function closeCart(){
 
-  document.getElementById("cartOverlay")
+  document
+    .getElementById("cartOverlay")
     .classList.remove("show");
 
 }
@@ -1379,6 +1710,7 @@ function renderCart(){
   const list =
     document.getElementById("cartList");
 
+
   if(!cart.length){
 
     list.innerHTML =
@@ -1386,14 +1718,18 @@ function renderCart(){
         السلة فاضية 🛒
       </div>`;
 
+
     document.getElementById("cartTotal")
-      .textContent = "0 جنيه";
+      .textContent =
+        "0 جنيه";
+
 
     return;
   }
 
 
   list.innerHTML =
+
     cart.map((item,index) => `
 
       <div class="cart-item">
@@ -1404,15 +1740,18 @@ function renderCart(){
           alt="${item.name}"
         >
 
+
         <div class="cart-info">
 
           <div class="cart-code">
             ${item.code}
           </div>
 
+
           <div class="cart-name">
             ${item.name}
           </div>
+
 
           <div class="cart-details">
             اللون: ${item.color}<br>
@@ -1422,11 +1761,17 @@ function renderCart(){
 
         </div>
 
+
         <div>
 
           <div class="cart-total">
-            ${item.price * item.quantity} جنيه
+            ${
+              item.price *
+              item.quantity
+            }
+            جنيه
           </div>
+
 
           <button
             class="delete-btn"
@@ -1442,12 +1787,10 @@ function renderCart(){
     `).join("");
 
 
-  const total =
-    getCartTotal();
-
   document.getElementById("cartTotal")
     .textContent =
-    total + " جنيه";
+      getCartTotal() +
+      " جنيه";
 
 }
 
@@ -1467,31 +1810,38 @@ function getCartTotal(){
 
   return cart.reduce(
     (total,item) =>
-      total + item.price * item.quantity,
+      total +
+      item.price *
+      item.quantity,
     0
   );
 
 }
 
 
-/* =========================
-   CHECKOUT
-========================= */
+/* ==============================
+   إتمام الطلب
+============================== */
 
 function openCheckout(){
 
   if(!cart.length){
 
-    alert("السلة فاضية، اختار منتج الأول 🛒");
-    return;
+    alert(
+      "السلة فاضية، اختار منتج الأول 🛒"
+    );
 
+    return;
   }
+
 
   renderCheckoutSummary();
 
   closeCart();
 
-  document.getElementById("checkoutOverlay")
+
+  document
+    .getElementById("checkoutOverlay")
     .classList.add("show");
 
 }
@@ -1499,7 +1849,8 @@ function openCheckout(){
 
 function closeCheckout(){
 
-  document.getElementById("checkoutOverlay")
+  document
+    .getElementById("checkoutOverlay")
     .classList.remove("show");
 
 }
@@ -1508,40 +1859,73 @@ function closeCheckout(){
 function renderCheckoutSummary(){
 
   const summary =
-    document.getElementById("checkoutSummary");
+    document.getElementById(
+      "checkoutSummary"
+    );
+
 
   summary.innerHTML = `
 
-    <div style="font-weight:bold;margin-bottom:8px;">
+    <div
+      style="
+        font-weight:bold;
+        margin-bottom:8px;
+      "
+    >
       تفاصيل الطلب
     </div>
 
-    ${cart.map(item => `
 
-      <div class="summary-item">
+    ${
+      cart.map(item => `
 
-        <img
-          class="summary-thumb"
-          src="${item.image}"
-          alt="${item.name}"
-        >
+        <div class="summary-item">
 
-        <div class="summary-text">
+          <img
+            class="summary-thumb"
+            src="${item.image}"
+            alt="${item.name}"
+          >
 
-          <strong>
-            ${item.code} — ${item.name}
-          </strong><br>
 
-          اللون: ${item.color}<br>
-          المقاس: ${item.size}<br>
-          الكمية: ${item.quantity}<br>
-          السعر: ${item.price * item.quantity} جنيه
+          <div class="summary-text">
+
+            <strong>
+              ${item.code} —
+              ${item.name}
+            </strong>
+
+            <br>
+
+            اللون:
+            ${item.color}
+
+            <br>
+
+            المقاس:
+            ${item.size}
+
+            <br>
+
+            الكمية:
+            ${item.quantity}
+
+            <br>
+
+            السعر:
+            ${
+              item.price *
+              item.quantity
+            }
+            جنيه
+
+          </div>
 
         </div>
 
-      </div>
+      `).join("")
+    }
 
-    `).join("")}
 
     <div
       style="
@@ -1551,7 +1935,8 @@ function renderCheckoutSummary(){
       "
     >
       الإجمالي:
-      ${getCartTotal()} جنيه
+      ${getCartTotal()}
+      جنيه
     </div>
 
   `;
@@ -1559,71 +1944,88 @@ function renderCheckoutSummary(){
 }
 
 
-/* =========================
-   SEND ORDER
-========================= */
+/* ==============================
+   إرسال واتساب
+============================== */
 
 function sendOrder(){
 
   if(!cart.length){
 
     alert("السلة فاضية");
-    return;
 
+    return;
   }
 
 
   const name =
-    document.getElementById("customerName")
-      .value.trim();
+    document
+      .getElementById("customerName")
+      .value
+      .trim();
+
 
   const phone =
-    document.getElementById("customerPhone")
-      .value.trim();
+    document
+      .getElementById("customerPhone")
+      .value
+      .trim();
+
 
   const governorate =
-    document.getElementById("customerGovernorate")
+    document
+      .getElementById("customerGovernorate")
       .value;
 
+
   const address =
-    document.getElementById("customerAddress")
-      .value.trim();
+    document
+      .getElementById("customerAddress")
+      .value
+      .trim();
+
 
   const notes =
-    document.getElementById("customerNotes")
-      .value.trim();
+    document
+      .getElementById("customerNotes")
+      .value
+      .trim();
 
 
   if(!name){
 
     alert("اكتب الاسم");
-    return;
 
+    return;
   }
+
 
   if(!phone){
 
     alert("اكتب رقم الموبايل");
-    return;
 
+    return;
   }
+
 
   if(!governorate){
 
     alert("اختار المحافظة");
-    return;
 
+    return;
   }
+
 
   if(!address){
 
     alert("اكتب العنوان");
-    return;
 
+    return;
   }
 
 
   let message =
+
 `🛍️ طلب جديد من موقع PARIS
 
 📦 تفاصيل الطلب:
@@ -1632,18 +2034,19 @@ function sendOrder(){
 
   cart.forEach((item,index) => {
 
-    const imageUrl =
-      SITE_URL + item.image;
-
     message += `
 
 ${index + 1}) ${item.code} — ${item.name}
 اللون: ${item.color}
 المقاس: ${item.size}
 الكمية: ${item.quantity}
-السعر: ${item.price * item.quantity} جنيه
+السعر: ${
+      item.price *
+      item.quantity
+    } جنيه
+
 🖼️ صورة المنتج:
-${imageUrl}
+${item.image}
 `;
 
   });
@@ -1681,12 +2084,20 @@ PARIS SHOES & BAGS
     encodeURIComponent(message);
 
 
-  window.open(url,"_blank");
+  window.open(
+    url,
+    "_blank"
+  );
 
 }
 
 
+/* ==============================
+   تشغيل الموقع
+============================== */
+
 renderProducts();
+
 updateCartCount();
 
 </script>
