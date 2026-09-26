@@ -1,366 +1,475 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paris Shoes & Bags</title>
 
-  <title>Paris Shoes & Bags</title>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body {
+  margin: 0;
+  font-family: Arial, Tahoma, sans-serif;
+  background: #faf8f5;
+  color: #222;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f6f2;
-      color: #222;
-    }
+header {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 24px 15px;
+}
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 22px 18px;
-      text-align: center;
-    }
+.logo {
+  font-size: 34px;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
 
-    .logo {
-      font-size: 32px;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
+.subtitle {
+  color: #d4af37;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
 
-    .subtitle {
-      margin-top: 7px;
-      color: #d4af6a;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
+.hero {
+  text-align: center;
+  padding: 35px 15px 25px;
+}
 
-    .hero {
-      padding: 55px 20px;
-      text-align: center;
-      background: #eee9e1;
-    }
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 27px;
+}
 
-    .hero h1 {
-      font-size: 30px;
-      margin-bottom: 15px;
-    }
+.hero p {
+  margin: 0;
+  color: #777;
+}
 
-    .hero p {
-      font-size: 17px;
-      color: #555;
-      margin-bottom: 25px;
-      line-height: 1.8;
-    }
+.product {
+  max-width: 480px;
+  margin: 20px auto 40px;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0,0,0,.08);
+}
 
-    .whatsapp {
-      display: inline-block;
-      background: #111;
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 4px;
-      font-size: 16px;
-    }
+.product-image {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  display: block;
+}
 
-    .section {
-      padding: 40px 18px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.product-info {
+  padding: 20px;
+}
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 25px;
-    }
+.product-info h2 {
+  margin: 0 0 8px;
+  font-size: 23px;
+}
 
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
+.description {
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
 
-    .category {
-      background: white;
-      padding: 30px 10px;
-      text-align: center;
-      border: 1px solid #e5e0d8;
-      font-size: 18px;
-    }
+.price {
+  font-size: 23px;
+  font-weight: bold;
+  color: #b28a19;
+  margin: 12px 0 20px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 430px;
-      margin: auto;
-    }
+.label {
+  font-weight: bold;
+  margin: 15px 0 8px;
+}
 
-    .product {
-      background: white;
-      padding: 12px;
-      border: 1px solid #e5e0d8;
-      text-align: right;
-      border-radius: 5px;
-    }
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
-    .product img {
-      width: 100%;
-      height: 330px;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 18px;
-      border-radius: 4px;
-    }
+.option {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
 
-    .product h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
-    }
+.option.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
 
-    .description {
-      color: #555;
-      font-size: 15px;
-      line-height: 1.8;
-      margin-bottom: 10px;
-    }
+.quantity {
+  width: 80px;
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+}
 
-    .sizes {
-      color: #555;
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
+.add-cart {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+}
 
-    .price {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 18px;
-    }
+.checkout {
+  display: none;
+  max-width: 480px;
+  margin: 20px auto 50px;
+  background: #fff;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 5px 25px rgba(0,0,0,.08);
+}
 
-    .colors-title {
-      font-size: 15px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+.checkout h2 {
+  margin-top: 0;
+}
 
-    .colors {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
+.cart-box {
+  background: #faf8f5;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
 
-    .color-btn {
-      flex: 1;
-      border: 1px solid #ccc;
-      background: white;
-      padding: 10px 5px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 6px 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+}
 
-    .color-btn.active {
-      border: 2px solid #111;
-      font-weight: bold;
-    }
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
 
-    .order {
-      display: block;
-      background: #111;
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      padding: 13px;
-      border-radius: 4px;
-      font-size: 16px;
-    }
+.whatsapp {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #25D366;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 20px;
-      line-height: 2;
-    }
+footer {
+  text-align: center;
+  background: #111;
+  color: #fff;
+  padding: 25px 15px;
+  margin-top: 30px;
+}
 
-    footer span {
-      color: #d4af6a;
-    }
-
-    @media (min-width: 700px) {
-      .categories {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-    }
-  </style>
+.location {
+  color: #d4af37;
+  margin-top: 8px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">PARIS</div>
-    <div class="subtitle">SHOES & BAGS</div>
-  </header>
+<header>
+  <div class="logo">PARIS</div>
+  <div class="subtitle">SHOES & BAGS</div>
+</header>
 
-  <section class="hero">
+<section class="hero">
+  <h1>اختاري أناقتك مع باريس</h1>
+  <p>أحذية وشنط بتفاصيل تليق بيكي</p>
+</section>
 
-    <h1>اختاري أناقتك مع باريس</h1>
+<section class="product">
 
-    <p>
-      أحذية وشنط مختارة بعناية<br>
-      ستايل أنيق • راحة • جودة
-    </p>
+  <img id="productImage"
+       class="product-image"
+       src="IMG_0991.png"
+       alt="شوز طبي سيليكون">
 
-    <a class="whatsapp"
-       href="https://wa.me/201098251580"
-       target="_blank">
-      تواصلي معنا على واتساب
-    </a>
+  <div class="product-info">
 
-  </section>
+    <h2>شوز طبي سيليكون</h2>
 
-  <section class="section">
+    <div class="description">
+      خفيف ومريح جدًا، مناسب للاستخدام اليومي،
+      بتصميم شيك وفورمال.
+    </div>
 
-    <h2>الأقسام</h2>
+    <div class="price">550 جنيه</div>
 
-    <div class="categories">
+    <div class="label">اختاري اللون:</div>
 
-      <div class="category">
-        👠<br><br>
-        أحذية
-      </div>
+    <div class="options">
 
-      <div class="category">
-        👜<br><br>
-        شنط
-      </div>
+      <button class="option active"
+              onclick="chooseColor('هافان','IMG_0991.png',this)">
+        هافان
+      </button>
 
-      <div class="category">
-        ✨<br><br>
-        جديدنا
-      </div>
+      <button class="option"
+              onclick="chooseColor('كافيه','IMG_0993.png',this)">
+        كافيه
+      </button>
 
-      <div class="category">
-        🔥<br><br>
-        الخصومات
-      </div>
+      <button class="option"
+              onclick="chooseColor('أسود','IMG_0992.png',this)">
+        أسود
+      </button>
 
     </div>
 
-  </section>
+    <div class="label">اختاري المقاس:</div>
 
-  <section class="section">
+    <div class="options">
 
-    <h2>منتجات باريس</h2>
+      <button class="option"
+              onclick="chooseSize('39',this)">39</button>
 
-    <div class="products">
+      <button class="option"
+              onclick="chooseSize('40',this)">40</button>
 
-      <div class="product">
+      <button class="option"
+              onclick="chooseSize('41',this)">41</button>
 
-        <img id="shoeImage"
-             src="IMG_0991.png"
-             alt="شوز طبي سيليكون">
+      <button class="option"
+              onclick="chooseSize('42',this)">42</button>
 
-        <h3>شوز طبي سيليكون</h3>
-
-        <p class="description">
-          مريح جدًا وخفيف ومناسب للاستخدام اليومي
-        </p>
-
-        <p class="sizes">
-          المقاسات المتاحة: 39 - 40 - 41 - 42 - 43
-        </p>
-
-        <div class="price">
-          550 جنيه
-        </div>
-
-        <div class="colors-title">
-          اختاري اللون:
-        </div>
-
-        <div class="colors">
-
-          <button
-            class="color-btn active"
-            onclick="changeColor('IMG_0991.png', 'هافان', this)">
-            هافان
-          </button>
-
-          <button
-            class="color-btn"
-            onclick="changeColor('IMG_0993.png', 'كافيه', this)">
-            كافيه
-          </button>
-
-          <button
-            class="color-btn"
-            onclick="changeColor('IMG_0992.png', 'أسود', this)">
-            أسود
-          </button>
-
-        </div>
-
-        <a
-          id="orderButton"
-          class="order"
-          href="https://wa.me/201098251580?text=أريد%20طلب%20الشوز%20الطبي%20السيليكون%20باللون%20الهافان"
-          target="_blank">
-          اطلب الآن عبر واتساب
-        </a>
-
-      </div>
+      <button class="option"
+              onclick="chooseSize('43',this)">43</button>
 
     </div>
 
-  </section>
+    <div class="label">الكمية:</div>
 
-  <footer>
+    <input
+      id="quantity"
+      class="quantity"
+      type="number"
+      min="1"
+      value="1">
 
-    <p>Paris Shoes & Bags</p>
+    <button class="add-cart" onclick="addToCart()">
+      🛒 أضف للسلة
+    </button>
 
-    <p>📍 شارع إسكندرية - مرسى مطروح</p>
+  </div>
+</section>
 
-    <p>توصيل لجميع أنحاء مصر</p>
+<section id="checkout" class="checkout">
 
-    <p>
-      WhatsApp:
-      <span>01098251580</span>
-    </p>
+  <h2>إتمام الطلب</h2>
 
-  </footer>
+  <div id="cartBox" class="cart-box"></div>
 
-  <script>
+  <label>الاسم</label>
+  <input id="customerName" type="text" placeholder="اكتب اسمك">
 
-    function changeColor(image, color, button) {
+  <label>رقم الموبايل</label>
+  <input id="customerPhone" type="tel" placeholder="01xxxxxxxxx">
 
-      document.getElementById("shoeImage").src = image;
+  <label>المحافظة</label>
+  <select id="governorate">
+    <option value="">اختار المحافظة</option>
+    <option>مطروح</option>
+    <option>الإسكندرية</option>
+    <option>القاهرة</option>
+    <option>الجيزة</option>
+    <option>البحيرة</option>
+    <option>الشرقية</option>
+    <option>الدقهلية</option>
+    <option>الغربية</option>
+    <option>المنوفية</option>
+    <option>القليوبية</option>
+    <option>كفر الشيخ</option>
+    <option>دمياط</option>
+    <option>بورسعيد</option>
+    <option>الإسماعيلية</option>
+    <option>السويس</option>
+    <option>الفيوم</option>
+    <option>بني سويف</option>
+    <option>المنيا</option>
+    <option>أسيوط</option>
+    <option>سوهاج</option>
+    <option>قنا</option>
+    <option>الأقصر</option>
+    <option>أسوان</option>
+    <option>البحر الأحمر</option>
+    <option>الوادي الجديد</option>
+    <option>شمال سيناء</option>
+    <option>جنوب سيناء</option>
+  </select>
 
-      document.querySelectorAll(".color-btn").forEach(function(btn) {
-        btn.classList.remove("active");
-      });
+  <label>العنوان بالتفصيل</label>
+  <textarea id="address" placeholder="المنطقة - الشارع - رقم العمارة - الدور"></textarea>
 
-      button.classList.add("active");
+  <label>ملاحظات إضافية (اختياري)</label>
+  <textarea id="notes" placeholder="أي ملاحظات على الطلب"></textarea>
 
-      let message =
-        "أريد طلب الشوز الطبي السيليكون باللون " + color;
+  <button class="whatsapp" onclick="sendOrder()">
+    💬 تأكيد الطلب عبر واتساب
+  </button>
 
-      document.getElementById("orderButton").href =
-        "https://wa.me/2010982512580?text=" +
-        encodeURIComponent(message);
+</section>
+
+<footer>
+  <div>PARIS SHOES & BAGS</div>
+  <div class="location">📍 شارع إسكندرية - مرسى مطروح</div>
+  <div style="margin-top:8px;">متاح توصيل لأي مكان في مصر</div>
+</footer>
+
+<script>
+
+let selectedColor = "هافان";
+let selectedSize = "";
+
+function chooseColor(color, image, button) {
+
+  selectedColor = color;
+
+  document.getElementById("productImage").src = image;
+
+  document.querySelectorAll(".options button").forEach(function(btn) {
+    if (
+      btn.textContent.includes("هافان") ||
+      btn.textContent.includes("كافيه") ||
+      btn.textContent.includes("أسود")
+    ) {
+      btn.classList.remove("active");
     }
+  });
 
-  </script>
+  button.classList.add("active");
+}
+
+function chooseSize(size, button) {
+
+  selectedSize = size;
+
+  document.querySelectorAll(".options button").forEach(function(btn) {
+    if (
+      ["39","40","41","42","43"].includes(btn.textContent.trim())
+    ) {
+      btn.classList.remove("active");
+    }
+  });
+
+  button.classList.add("active");
+}
+
+function addToCart() {
+
+  if (selectedSize === "") {
+    alert("من فضلك اختاري المقاس أولاً");
+    return;
+  }
+
+  const quantity = document.getElementById("quantity").value;
+
+  if (quantity < 1) {
+    alert("من فضلك اختاري كمية صحيحة");
+    return;
+  }
+
+  const total = 550 * quantity;
+
+  document.getElementById("cartBox").innerHTML =
+    "<strong>المنتج:</strong> شوز طبي سيليكون<br>" +
+    "<strong>اللون:</strong> " + selectedColor + "<br>" +
+    "<strong>المقاس:</strong> " + selectedSize + "<br>" +
+    "<strong>الكمية:</strong> " + quantity + "<br>" +
+    "<strong>الإجمالي:</strong> " + total + " جنيه";
+
+  document.getElementById("checkout").style.display = "block";
+
+  document.getElementById("checkout").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function sendOrder() {
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const governorate = document.getElementById("governorate").value;
+  const address = document.getElementById("address").value.trim();
+  const notes = document.getElementById("notes").value.trim();
+  const quantity = document.getElementById("quantity").value;
+
+  if (!name || !phone || !governorate || !address) {
+    alert("من فضلك اكتبي الاسم والموبايل والمحافظة والعنوان");
+    return;
+  }
+
+  if (!selectedSize) {
+    alert("من فضلك اختاري المقاس");
+    return;
+  }
+
+  const total = 550 * quantity;
+
+  const message =
+`🛍️ طلب جديد من موقع باريس
+
+👟 المنتج: شوز طبي سيليكون
+🎨 اللون: ${selectedColor}
+📏 المقاس: ${selectedSize}
+🔢 الكمية: ${quantity}
+💰 الإجمالي: ${total} جنيه
+
+👤 اسم العميل: ${name}
+📱 رقم الموبايل: ${phone}
+📍 المحافظة: ${governorate}
+🏠 العنوان: ${address}
+📝 ملاحظات: ${notes || "لا يوجد"}
+
+Paris Shoes & Bags`;
+
+  const whatsappNumber = "201098251580";
+
+  const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.location.href = whatsappURL;
+}
+
+</script>
 
 </body>
 </html>
