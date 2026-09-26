@@ -21,7 +21,7 @@
 
     header {
       background: #111;
-      color: #fff;
+      color: white;
       padding: 22px 18px;
       text-align: center;
     }
@@ -60,7 +60,7 @@
     .whatsapp {
       display: inline-block;
       background: #111;
-      color: #fff;
+      color: white;
       text-decoration: none;
       padding: 14px 28px;
       border-radius: 4px;
@@ -110,23 +110,22 @@
 
     .product img {
       width: 100%;
-      height: 300px;
+      height: 330px;
       object-fit: cover;
       display: block;
       margin-bottom: 15px;
-    }
-
-    .discount {
-      display: inline-block;
-      background: #111;
-      color: #d4af6a;
-      padding: 6px 10px;
-      font-size: 13px;
-      margin-bottom: 10px;
+      border-radius: 3px;
     }
 
     .product h3 {
-      font-size: 20px;
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.8;
       margin-bottom: 10px;
     }
 
@@ -136,16 +135,35 @@
       margin-bottom: 12px;
     }
 
-    .old-price {
-      color: #999;
-      text-decoration: line-through;
-      font-size: 15px;
-      margin-left: 8px;
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
     }
 
-    .new-price {
-      color: #111;
-      font-size: 22px;
+    .colors-title {
+      font-size: 15px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .colors {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .color-btn {
+      border: 1px solid #ccc;
+      background: white;
+      padding: 8px 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .color-btn.active {
+      border: 2px solid #111;
       font-weight: bold;
     }
 
@@ -156,7 +174,7 @@
       text-decoration: none;
       text-align: center;
       padding: 13px;
-      margin-top: 18px;
+      margin-top: 10px;
       border-radius: 4px;
       font-size: 16px;
     }
@@ -240,29 +258,56 @@
 
   <section class="section">
 
-    <h2>الخصومات</h2>
+    <h2>منتجات باريس</h2>
 
     <div class="products">
 
       <div class="product">
 
-        <img src="IMG_0775.jpeg" alt="شوز برجندي">
+        <img id="shoeImage"
+             src="IMG_0993.png"
+             alt="شوز طبي سيليكون">
 
-        <div class="discount">خصم</div>
+        <h3>شوز طبي سيليكون</h3>
 
-        <h3>شوز برجندي</h3>
-
-        <p class="sizes">
-          المقاسات المتاحة: 38 و39
+        <p class="description">
+          مريح جدًا وخفيف، مناسب للاستخدام اليومي
         </p>
 
-        <div>
-          <span class="old-price">850 جنيه</span>
-          <span class="new-price">650 جنيه</span>
+        <p class="sizes">
+          المقاسات المتاحة: 39 - 40 - 41 - 42 - 43
+        </p>
+
+        <div class="price">
+          550 جنيه
         </div>
 
-        <a class="order"
-           href="https://wa.me/201098251580?text=أريد%20طلب%20شوز%20برجندي%20مقاس%2038%20أو%2039"
+        <div class="colors-title">
+          اختاري اللون:
+        </div>
+
+        <div class="colors">
+
+          <button class="color-btn active"
+                  onclick="changeColor('IMG_0993.png', this)">
+            هافان
+          </button>
+
+          <button class="color-btn"
+                  onclick="changeColor('IMG_0992.png', this)">
+            كافيه
+          </button>
+
+          <button class="color-btn"
+                  onclick="changeColor('IMG_0991.png', this)">
+            أسود
+          </button>
+
+        </div>
+
+        <a id="orderButton"
+           class="order"
+           href="https://wa.me/201098251580?text=أريد%20طلب%20الشوز%20الطبي%20السيليكون%20باللون%20الهافان%20مقاس%2039"
            target="_blank">
           اطلب الآن عبر واتساب
         </a>
@@ -287,6 +332,32 @@
     </p>
 
   </footer>
+
+  <script>
+
+    function changeColor(image, button) {
+
+      document.getElementById("shoeImage").src = image;
+
+      document.querySelectorAll(".color-btn").forEach(function(btn) {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      let color = button.innerText;
+
+      let message =
+        "أريد طلب الشوز الطبي السيليكون باللون " +
+        color +
+        " مقاس ";
+
+      document.getElementById("orderButton").href =
+        "https://wa.me/201098251580?text=" +
+        encodeURIComponent(message);
+    }
+
+  </script>
 
 </body>
 </html>
