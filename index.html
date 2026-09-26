@@ -6,624 +6,112 @@
 <title>PARIS SHOES & BAGS</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial,Tahoma,sans-serif;
-  background:#faf9f7;
-  color:#171717;
-}
-
-button,input,select,textarea{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#111;
-  color:#fff;
-  padding:15px 18px;
-  box-shadow:0 2px 12px rgba(0,0,0,.12);
-}
-
-.header-inner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:3px;
-}
-
-.logo span{
-  display:block;
-  font-size:10px;
-  letter-spacing:3px;
-  color:#d4af37;
-  margin-top:3px;
-}
-
-.header-actions{
-  display:flex;
-  gap:8px;
-}
-
-.icon-btn{
-  width:42px;
-  height:42px;
-  border:1px solid #444;
-  background:#1b1b1b;
-  color:#fff;
-  border-radius:50%;
-  font-size:18px;
-  position:relative;
-}
-
-.cart-count{
-  position:absolute;
-  top:-4px;
-  right:-3px;
-  width:19px;
-  height:19px;
-  border-radius:50%;
-  background:#d4af37;
-  color:#111;
-  font-size:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-}
-
-.hero{
-  background:linear-gradient(135deg,#171717,#292929);
-  color:white;
-  padding:55px 20px;
-  text-align:center;
-}
-
-.hero h1{
-  font-size:38px;
-  letter-spacing:3px;
-  margin-bottom:12px;
-}
-
-.hero p{
-  color:#ddd;
-  font-size:15px;
-  margin-bottom:22px;
-}
-
-.hero-btn{
-  border:0;
-  background:#d4af37;
-  color:#111;
-  padding:13px 28px;
-  border-radius:30px;
-  font-weight:bold;
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:25px 16px 50px;
-}
-
-.categories{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding-bottom:10px;
-  margin-bottom:18px;
-}
-
-.categories::-webkit-scrollbar{
-  display:none;
-}
-
-.cat-btn{
-  white-space:nowrap;
-  border:1px solid #ddd;
-  background:white;
-  padding:10px 18px;
-  border-radius:25px;
-}
-
-.cat-btn.active{
-  background:#111;
-  color:white;
-  border-color:#111;
-}
-
-.search{
-  width:100%;
-  border:1px solid #ddd;
-  background:white;
-  padding:14px 17px;
-  border-radius:12px;
-  margin-bottom:25px;
-  outline:none;
-  font-size:15px;
-}
-
-.section-title{
-  margin-bottom:18px;
-}
-
-.section-title h2{
-  font-size:23px;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.product-card{
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:15px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 4px 15px rgba(0,0,0,.04);
-}
-
-.product-image{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  display:block;
-  background:#f3f3f3;
-  cursor:pointer;
-}
-
-.favorite{
-  position:absolute;
-  top:10px;
-  left:10px;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  border:0;
-  background:rgba(255,255,255,.92);
-  font-size:20px;
-  z-index:2;
-}
-
-.favorite.active{
-  color:#c00;
-}
-
-.badge{
-  position:absolute;
-  top:10px;
-  right:10px;
-  background:#111;
-  color:white;
-  padding:6px 10px;
-  border-radius:15px;
-  font-size:11px;
-}
-
-.product-info{
-  padding:15px;
-}
-
-.product-code{
-  color:#9b7b17;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:6px;
-}
-
-.product-name{
-  font-size:17px;
-  font-weight:bold;
-  margin-bottom:7px;
-}
-
-.product-desc{
-  color:#777;
-  font-size:12px;
-  line-height:1.6;
-  min-height:38px;
-}
-
-.product-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:14px;
-}
-
-.price{
-  font-weight:bold;
-  font-size:17px;
-}
-
-.view-btn{
-  border:0;
-  background:#111;
-  color:#fff;
-  padding:9px 13px;
-  border-radius:8px;
-  font-size:12px;
-}
-
-.empty{
-  text-align:center;
-  padding:45px 10px;
-  color:#777;
-  grid-column:1/-1;
-}
-
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  z-index:2000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-}
-
-.overlay.show{
-  display:flex;
-}
-
-.modal{
-  width:min(560px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:#fff;
-  border-radius:18px;
-  position:relative;
-}
-
-.close{
-  position:absolute;
-  top:12px;
-  left:12px;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  border:0;
-  background:#111;
-  color:#fff;
-  font-size:20px;
-  z-index:3;
-}
-
-.modal-image{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  display:block;
-  background:#f4f4f4;
-}
-
-.modal-content{
-  padding:20px;
-}
-
-.modal-code{
-  color:#9b7b17;
-  font-weight:bold;
-  font-size:13px;
-  margin-bottom:7px;
-}
-
-.modal-title{
-  font-size:23px;
-  font-weight:bold;
-  margin-bottom:8px;
-}
-
-.modal-desc{
-  color:#777;
-  line-height:1.7;
-  font-size:14px;
-  margin-bottom:18px;
-}
-
-.option-title{
-  font-size:14px;
-  font-weight:bold;
-  margin:15px 0 9px;
-}
-
-.options{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.option{
-  border:1px solid #ddd;
-  background:#fff;
-  padding:9px 15px;
-  border-radius:9px;
-}
-
-.option.active{
-  border-color:#111;
-  background:#111;
-  color:#fff;
-}
-
-.qty-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin:18px 0;
-}
-
-.qty-btn{
-  width:35px;
-  height:35px;
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:8px;
-  font-size:18px;
-}
-
-.qty-number{
-  min-width:25px;
-  text-align:center;
-  font-weight:bold;
-}
-
-.add-btn{
-  width:100%;
-  background:#111;
-  color:#fff;
-  border:0;
-  padding:15px;
-  border-radius:10px;
-  font-weight:bold;
-  font-size:15px;
-}
-
-.cart-list{
-  padding:20px;
-}
-
-.cart-item{
-  display:flex;
-  gap:12px;
-  border-bottom:1px solid #eee;
-  padding:13px 0;
-  align-items:center;
-}
-
-.cart-thumb{
-  width:78px;
-  height:78px;
-  border-radius:10px;
-  object-fit:cover;
-  background:#f2f2f2;
-  flex-shrink:0;
-}
-
-.cart-info{
-  flex:1;
-}
-
-.cart-code{
-  color:#9b7b17;
-  font-size:11px;
-  font-weight:bold;
-}
-
-.cart-name{
-  font-weight:bold;
-  font-size:14px;
-  margin:3px 0;
-}
-
-.cart-details{
-  color:#777;
-  font-size:12px;
-  line-height:1.7;
-}
-
-.cart-total{
-  font-weight:bold;
-  white-space:nowrap;
-}
-
-.delete-btn{
-  border:0;
-  background:none;
-  color:#b00;
-  font-size:18px;
-}
-
-.total-box{
-  background:#f7f5ef;
-  margin:15px 20px;
-  padding:15px;
-  border-radius:12px;
-  display:flex;
-  justify-content:space-between;
-  font-weight:bold;
-}
-
-.checkout-btn{
-  margin:0 20px 20px;
-  width:calc(100% - 40px);
-  border:0;
-  background:#111;
-  color:#fff;
-  padding:15px;
-  border-radius:10px;
-  font-weight:bold;
-}
-
-.form{
-  padding:20px;
-}
-
-.form h2{
-  margin-bottom:18px;
-}
-
-.form label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin:12px 0 6px;
-}
-
-.form input,
-.form textarea,
-.form select{
-  width:100%;
-  border:1px solid #ddd;
-  border-radius:9px;
-  padding:12px;
-  outline:none;
-  background:#fff;
-}
-
-.form textarea{
-  min-height:80px;
-  resize:vertical;
-}
-
-.summary{
-  background:#f8f8f8;
-  border-radius:12px;
-  padding:12px;
-  margin:15px 0;
-}
-
-.summary-item{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  padding:8px 0;
-  border-bottom:1px solid #e5e5e5;
-}
-
-.summary-item:last-child{
-  border-bottom:0;
-}
-
-.summary-thumb{
-  width:55px;
-  height:55px;
-  object-fit:cover;
-  border-radius:8px;
-}
-
-.summary-text{
-  font-size:12px;
-  line-height:1.7;
-}
-
-.send-btn{
-  width:100%;
-  border:0;
-  background:#25d366;
-  color:#fff;
-  padding:15px;
-  border-radius:10px;
-  font-size:15px;
-  font-weight:bold;
-  margin-top:15px;
-}
-
-.footer{
-  background:#111;
-  color:#fff;
-  text-align:center;
-  padding:30px 15px;
-}
-
-.footer-logo{
-  font-size:25px;
-  letter-spacing:3px;
-  font-weight:bold;
-}
-
-.footer p{
-  color:#bbb;
-  font-size:13px;
-  margin-top:8px;
-  line-height:1.8;
-}
-
-.whatsapp-float{
-  position:fixed;
-  left:17px;
-  bottom:17px;
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  background:#25d366;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:27px;
-  text-decoration:none;
-  z-index:1500;
-  box-shadow:0 5px 18px rgba(0,0,0,.2);
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Tahoma,sans-serif;background:#faf9f7;color:#171717}
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+
+.header{position:sticky;top:0;z-index:1000;background:#111;color:#fff;padding:15px 18px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.header-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:800;letter-spacing:3px}
+.logo span{display:block;font-size:10px;letter-spacing:3px;color:#d4af37;margin-top:3px}
+.header-actions{display:flex;gap:8px}
+.icon-btn{width:42px;height:42px;border:1px solid #444;background:#1b1b1b;color:#fff;border-radius:50%;font-size:18px;position:relative}
+.cart-count{position:absolute;top:-4px;right:-3px;width:19px;height:19px;border-radius:50%;background:#d4af37;color:#111;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+
+.hero{background:linear-gradient(135deg,#171717,#292929);color:white;padding:55px 20px;text-align:center}
+.hero h1{font-size:38px;letter-spacing:3px;margin-bottom:12px}
+.hero p{color:#ddd;font-size:15px;margin-bottom:22px}
+.hero-btn{border:0;background:#d4af37;color:#111;padding:13px 28px;border-radius:30px;font-weight:bold}
+
+.container{max-width:1200px;margin:auto;padding:25px 16px 50px}
+.categories{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:18px}
+.categories::-webkit-scrollbar{display:none}
+.cat-btn{white-space:nowrap;border:1px solid #ddd;background:white;padding:10px 18px;border-radius:25px}
+.cat-btn.active{background:#111;color:white;border-color:#111}
+
+.search{width:100%;border:1px solid #ddd;background:white;padding:14px 17px;border-radius:12px;margin-bottom:25px;outline:none;font-size:15px}
+.section-title{margin-bottom:18px}
+.section-title h2{font-size:23px}
+
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product-card{background:#fff;border:1px solid #eee;border-radius:15px;overflow:hidden;position:relative;box-shadow:0 4px 15px rgba(0,0,0,.04)}
+.product-image{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#f3f3f3;cursor:pointer}
+
+.favorite{position:absolute;top:10px;left:10px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:20px;z-index:2}
+.favorite.active{color:#c00}
+
+.badge{position:absolute;top:10px;right:10px;background:#111;color:white;padding:6px 10px;border-radius:15px;font-size:11px}
+.product-info{padding:15px}
+.product-code{color:#9b7b17;font-size:12px;font-weight:bold;margin-bottom:6px}
+.product-name{font-size:17px;font-weight:bold;margin-bottom:7px}
+.product-desc{color:#777;font-size:12px;line-height:1.6;min-height:38px}
+.product-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.price{font-weight:bold;font-size:17px}
+.view-btn{border:0;background:#111;color:#fff;padding:9px 13px;border-radius:8px;font-size:12px}
+.empty{text-align:center;padding:45px 10px;color:#777;grid-column:1/-1}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:2000;display:none;align-items:center;justify-content:center;padding:15px}
+.overlay.show{display:flex}
+.modal{width:min(560px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:18px;position:relative}
+.close{position:absolute;top:12px;left:12px;width:38px;height:38px;border-radius:50%;border:0;background:#111;color:#fff;font-size:20px;z-index:3}
+.modal-image{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#f4f4f4}
+.modal-content{padding:20px}
+.modal-code{color:#9b7b17;font-weight:bold;font-size:13px;margin-bottom:7px}
+.modal-title{font-size:23px;font-weight:bold;margin-bottom:8px}
+.modal-desc{color:#777;line-height:1.7;font-size:14px;margin-bottom:18px}
+.option-title{font-size:14px;font-weight:bold;margin:15px 0 9px}
+.options{display:flex;flex-wrap:wrap;gap:8px}
+.option{border:1px solid #ddd;background:#fff;padding:9px 15px;border-radius:9px}
+.option.active{border-color:#111;background:#111;color:#fff}
+
+.qty-row{display:flex;align-items:center;gap:12px;margin:18px 0}
+.qty-btn{width:35px;height:35px;border:1px solid #ddd;background:#fff;border-radius:8px;font-size:18px}
+.qty-number{min-width:25px;text-align:center;font-weight:bold}
+.add-btn{width:100%;background:#111;color:#fff;border:0;padding:15px;border-radius:10px;font-weight:bold;font-size:15px}
+
+.cart-list{padding:20px}
+.cart-item{display:flex;gap:12px;border-bottom:1px solid #eee;padding:13px 0;align-items:center}
+.cart-thumb{width:78px;height:78px;border-radius:10px;object-fit:cover;background:#f2f2f2;flex-shrink:0}
+.cart-info{flex:1}
+.cart-code{color:#9b7b17;font-size:11px;font-weight:bold}
+.cart-name{font-weight:bold;font-size:14px;margin:3px 0}
+.cart-details{color:#777;font-size:12px;line-height:1.7}
+.cart-total{font-weight:bold;white-space:nowrap}
+.delete-btn{border:0;background:none;color:#b00;font-size:18px}
+.total-box{background:#f7f5ef;margin:15px 20px;padding:15px;border-radius:12px;display:flex;justify-content:space-between;font-weight:bold}
+.checkout-btn{margin:0 20px 20px;width:calc(100% - 40px);border:0;background:#111;color:#fff;padding:15px;border-radius:10px;font-weight:bold}
+
+.form{padding:20px}
+.form h2{margin-bottom:18px}
+.form label{display:block;font-size:13px;font-weight:bold;margin:12px 0 6px}
+.form input,.form textarea,.form select{width:100%;border:1px solid #ddd;border-radius:9px;padding:12px;outline:none;background:#fff}
+.form textarea{min-height:80px;resize:vertical}
+.summary{background:#f8f8f8;border-radius:12px;padding:12px;margin:15px 0}
+.summary-item{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #e5e5e5}
+.summary-item:last-child{border-bottom:0}
+.summary-thumb{width:55px;height:55px;object-fit:cover;border-radius:8px}
+.summary-text{font-size:12px;line-height:1.7}
+.send-btn{width:100%;border:0;background:#25d366;color:#fff;padding:15px;border-radius:10px;font-size:15px;font-weight:bold;margin-top:15px}
+
+.footer{background:#111;color:#fff;text-align:center;padding:30px 15px}
+.footer-logo{font-size:25px;letter-spacing:3px;font-weight:bold}
+.footer p{color:#bbb;font-size:13px;margin-top:8px;line-height:1.8}
+
+.whatsapp-float{position:fixed;left:17px;bottom:17px;width:55px;height:55px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:27px;text-decoration:none;z-index:1500;box-shadow:0 5px 18px rgba(0,0,0,.2)}
 
 @media(max-width:900px){
-  .products{
-    grid-template-columns:repeat(3,1fr);
-  }
+.products{grid-template-columns:repeat(3,1fr)}
 }
 
 @media(max-width:650px){
-  .hero h1{
-    font-size:30px;
-  }
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-
-  .product-info{
-    padding:11px;
-  }
-
-  .product-name{
-    font-size:14px;
-  }
-
-  .product-desc{
-    font-size:11px;
-  }
-
-  .price{
-    font-size:14px;
-  }
-
-  .view-btn{
-    padding:8px 9px;
-  }
+.hero h1{font-size:30px}
+.products{grid-template-columns:repeat(2,1fr);gap:10px}
+.product-info{padding:11px}
+.product-name{font-size:14px}
+.product-desc{font-size:11px}
+.price{font-size:14px}
+.view-btn{padding:8px 9px}
 }
 </style>
 </head>
@@ -631,1164 +119,709 @@ button{
 <body>
 
 <header class="header">
-  <div class="header-inner">
-    <div class="logo">
-      PARIS
-      <span>SHOES & BAGS</span>
-    </div>
+<div class="header-inner">
+<div class="logo">
+PARIS
+<span>SHOES & BAGS</span>
+</div>
 
-    <div class="header-actions">
-      <button class="icon-btn" onclick="openCart()">
-        🛒
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-    </div>
-  </div>
+<div class="header-actions">
+<button class="icon-btn" onclick="openCart()">
+🛒
+<span class="cart-count" id="cartCount">0</span>
+</button>
+</div>
+</div>
 </header>
 
 <section class="hero">
-  <h1>PARIS</h1>
-  <p>اختاري أناقتك مع باريس</p>
-
-  <button
-    class="hero-btn"
-    onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})"
-  >
-    تسوقي الآن
-  </button>
+<h1>PARIS</h1>
+<p>اختاري أناقتك مع باريس</p>
+<button class="hero-btn" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">
+تسوقي الآن
+</button>
 </section>
 
 <main class="container" id="productsSection">
 
-  <div class="categories">
-    <button class="cat-btn active" onclick="filterCategory('all',this)">الكل</button>
-    <button class="cat-btn" onclick="filterCategory('shoes',this)">أحذية</button>
-    <button class="cat-btn" onclick="filterCategory('medical',this)">طبي</button>
-    <button class="cat-btn" onclick="filterCategory('bags',this)">شنط</button>
-    <button class="cat-btn" onclick="filterCategory('discount',this)">خصومات</button>
-    <button class="cat-btn" onclick="filterCategory('new',this)">جديد</button>
-  </div>
+<div class="categories">
+<button class="cat-btn active" onclick="filterCategory('all',this)">الكل</button>
+<button class="cat-btn" onclick="filterCategory('shoes',this)">أحذية</button>
+<button class="cat-btn" onclick="filterCategory('medical',this)">طبي</button>
+<button class="cat-btn" onclick="filterCategory('bags',this)">شنط</button>
+<button class="cat-btn" onclick="filterCategory('discount',this)">خصومات</button>
+<button class="cat-btn" onclick="filterCategory('new',this)">جديد</button>
+</div>
 
-  <input
-    class="search"
-    id="searchInput"
-    type="search"
-    placeholder="ابحثي عن المنتج..."
-    oninput="searchProducts()"
-  >
+<input class="search" id="searchInput" type="search" placeholder="ابحثي عن المنتج..." oninput="searchProducts()">
 
-  <div class="section-title">
-    <h2>منتجات باريس</h2>
-  </div>
+<div class="section-title">
+<h2>منتجات باريس</h2>
+</div>
 
-  <div class="products" id="productsGrid"></div>
+<div class="products" id="productsGrid"></div>
 
 </main>
 
 <footer class="footer">
-  <div class="footer-logo">PARIS</div>
-  <p>SHOES & BAGS</p>
-  <p>📍 شارع إسكندرية - مرسى مطروح</p>
-  <p>🚚 متاح توصيل لأي مكان في مصر</p>
+<div class="footer-logo">PARIS</div>
+<p>SHOES & BAGS</p>
+<p>📍 شارع إسكندرية - مرسى مطروح</p>
+<p>🚚 متاح توصيل لأي مكان في مصر</p>
 </footer>
 
-<a
-  class="whatsapp-float"
-  href="https://wa.me/201098251580"
-  target="_blank"
->
-  ☎
-</a>
+<a class="whatsapp-float" href="https://wa.me/201098251580" target="_blank">☎</a>
 
 <div class="overlay" id="productOverlay">
+<div class="modal">
 
-  <div class="modal">
+<button class="close" onclick="closeProduct()">×</button>
 
-    <button class="close" onclick="closeProduct()">×</button>
+<img id="modalImage" class="modal-image" src="" alt="product">
 
-    <img
-      id="modalImage"
-      class="modal-image"
-      src=""
-      alt="product"
-    >
+<div class="modal-content">
 
-    <div class="modal-content">
+<div class="modal-code" id="modalCode"></div>
+<div class="modal-title" id="modalTitle"></div>
+<div class="modal-desc" id="modalDesc"></div>
+<div class="price" id="modalPrice"></div>
 
-      <div class="modal-code" id="modalCode"></div>
+<div class="option-title">اختاري اللون</div>
+<div class="options" id="colorOptions"></div>
 
-      <div class="modal-title" id="modalTitle"></div>
+<div class="option-title">اختاري المقاس</div>
+<div class="options" id="sizeOptions"></div>
 
-      <div class="modal-desc" id="modalDesc"></div>
+<div class="qty-row">
+<button class="qty-btn" onclick="changeQty(-1)">−</button>
+<div class="qty-number" id="qtyNumber">1</div>
+<button class="qty-btn" onclick="changeQty(1)">+</button>
+</div>
 
-      <div class="price" id="modalPrice"></div>
+<button class="add-btn" onclick="addCurrentProductToCart()">
+إضافة للسلة 🛒
+</button>
 
-      <div class="option-title">اختاري اللون</div>
-
-      <div class="options" id="colorOptions"></div>
-
-      <div class="option-title">اختاري المقاس</div>
-
-      <div class="options" id="sizeOptions"></div>
-
-      <div class="qty-row">
-
-        <button class="qty-btn" onclick="changeQty(-1)">−</button>
-
-        <div class="qty-number" id="qtyNumber">1</div>
-
-        <button class="qty-btn" onclick="changeQty(1)">+</button>
-
-      </div>
-
-      <button
-        class="add-btn"
-        onclick="addCurrentProductToCart()"
-      >
-        إضافة للسلة 🛒
-      </button>
-
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
 <div class="overlay" id="cartOverlay">
+<div class="modal">
 
-  <div class="modal">
+<button class="close" onclick="closeCart()">×</button>
 
-    <button class="close" onclick="closeCart()">×</button>
+<div class="cart-list">
 
-    <div class="cart-list">
+<h2 style="margin-bottom:8px;">سلة المشتريات</h2>
 
-      <h2 style="margin-bottom:8px;">
-        سلة المشتريات
-      </h2>
+<p style="color:#777;font-size:13px;margin-bottom:10px;">
+المنتجات المختارة
+</p>
 
-      <p style="color:#777;font-size:13px;margin-bottom:10px;">
-        المنتجات المختارة
-      </p>
+<div id="cartList"></div>
 
-      <div id="cartList"></div>
+</div>
 
-    </div>
+<div class="total-box">
+<span>الإجمالي</span>
+<span id="cartTotal">0 جنيه</span>
+</div>
 
-    <div class="total-box">
-      <span>الإجمالي</span>
-      <span id="cartTotal">0 جنيه</span>
-    </div>
+<button class="checkout-btn" onclick="openCheckout()">
+متابعة الطلب
+</button>
 
-    <button
-      class="checkout-btn"
-      onclick="openCheckout()"
-    >
-      متابعة الطلب
-    </button>
-
-  </div>
+</div>
 </div>
 
 <div class="overlay" id="checkoutOverlay">
+<div class="modal">
 
-  <div class="modal">
+<button class="close" onclick="closeCheckout()">×</button>
 
-    <button class="close" onclick="closeCheckout()">×</button>
+<div class="form">
 
-    <div class="form">
+<h2>تأكيد الطلب</h2>
 
-      <h2>تأكيد الطلب</h2>
+<div class="summary" id="checkoutSummary"></div>
 
-      <div class="summary" id="checkoutSummary"></div>
+<label>الاسم</label>
+<input id="customerName" type="text" placeholder="اكتب الاسم">
 
-      <label>الاسم</label>
+<label>رقم الموبايل</label>
+<input id="customerPhone" type="tel" placeholder="01xxxxxxxxx">
 
-      <input
-        id="customerName"
-        type="text"
-        placeholder="اكتب الاسم"
-      >
+<label>المحافظة</label>
 
-      <label>رقم الموبايل</label>
+<select id="customerGovernorate">
+<option value="">اختار المحافظة</option>
+<option>مطروح</option>
+<option>الإسكندرية</option>
+<option>القاهرة</option>
+<option>الجيزة</option>
+<option>البحيرة</option>
+<option>الدقهلية</option>
+<option>الشرقية</option>
+<option>الغربية</option>
+<option>المنوفية</option>
+<option>القليوبية</option>
+<option>كفر الشيخ</option>
+<option>دمياط</option>
+<option>بورسعيد</option>
+<option>الإسماعيلية</option>
+<option>السويس</option>
+<option>الفيوم</option>
+<option>بني سويف</option>
+<option>المنيا</option>
+<option>أسيوط</option>
+<option>سوهاج</option>
+<option>قنا</option>
+<option>الأقصر</option>
+<option>أسوان</option>
+<option>البحر الأحمر</option>
+<option>شمال سيناء</option>
+<option>جنوب سيناء</option>
+<option>الوادي الجديد</option>
+</select>
 
-      <input
-        id="customerPhone"
-        type="tel"
-        placeholder="01xxxxxxxxx"
-      >
+<label>العنوان بالتفصيل</label>
+<textarea id="customerAddress" placeholder="المنطقة - الشارع - رقم المنزل..."></textarea>
 
-      <label>المحافظة</label>
+<label>ملاحظات</label>
+<textarea id="customerNotes" placeholder="أي ملاحظات إضافية للطلب"></textarea>
 
-      <select id="customerGovernorate">
+<button class="send-btn" onclick="sendOrder()">
+تأكيد الطلب عبر واتساب 📲
+</button>
 
-        <option value="">اختار المحافظة</option>
-        <option>مطروح</option>
-        <option>الإسكندرية</option>
-        <option>القاهرة</option>
-        <option>الجيزة</option>
-        <option>البحيرة</option>
-        <option>الدقهلية</option>
-        <option>الشرقية</option>
-        <option>الغربية</option>
-        <option>المنوفية</option>
-        <option>القليوبية</option>
-        <option>كفر الشيخ</option>
-        <option>دمياط</option>
-        <option>بورسعيد</option>
-        <option>الإسماعيلية</option>
-        <option>السويس</option>
-        <option>الفيوم</option>
-        <option>بني سويف</option>
-        <option>المنيا</option>
-        <option>أسيوط</option>
-        <option>سوهاج</option>
-        <option>قنا</option>
-        <option>الأقصر</option>
-        <option>أسوان</option>
-        <option>البحر الأحمر</option>
-        <option>شمال سيناء</option>
-        <option>جنوب سيناء</option>
-        <option>الوادي الجديد</option>
-
-      </select>
-
-      <label>العنوان بالتفصيل</label>
-
-      <textarea
-        id="customerAddress"
-        placeholder="المنطقة - الشارع - رقم المنزل..."
-      ></textarea>
-
-      <label>ملاحظات</label>
-
-      <textarea
-        id="customerNotes"
-        placeholder="أي ملاحظات إضافية للطلب"
-      ></textarea>
-
-      <button
-        class="send-btn"
-        onclick="sendOrder()"
-      >
-        تأكيد الطلب عبر واتساب 📲
-      </button>
-
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
 <script>
 
-/* ==============================
-   الإعدادات
-============================== */
-
 const WHATSAPP = "201098251580";
 
-
-/* ==============================
-   الصور
-   الصور موجودة بجوار index.html
-============================== */
-
+/* الصور من GitHub مباشرة */
 function imageURL(file){
-  return "./" + file;
+return "https://raw.githubusercontent.com/mnntpk6tkd-droid/Paris---shoes---bags/main/" + encodeURIComponent(file);
 }
-
-
-/* ==============================
-   المنتجات
-============================== */
 
 const products = [
 
-  {
-    id:1,
-    code:"A1",
-    name:"شوز طبي سيليكون",
-    category:"medical",
+{
+id:1,
+code:"A1",
+name:"شوز طبي سيليكون",
+category:"medical",
+tags:["shoes","medical","new"],
+description:"خفيف ومريح جدًا، مناسب للاستخدام اليومي بتصميم شيك وفورمال.",
+price:550,
+image:imageURL("IMG_0991.png"),
 
-    tags:[
-      "shoes",
-      "medical",
-      "new"
-    ],
+colors:[
+{name:"هافان",image:imageURL("IMG_0991.png")},
+{name:"كافيه",image:imageURL("IMG_0993.png")},
+{name:"أسود",image:imageURL("IMG_0992.png")}
+],
 
-    description:
-      "خفيف ومريح جدًا، مناسب للاستخدام اليومي بتصميم شيك وفورمال.",
+sizes:["39","40","41","42","43"],
+badge:"جديد"
+},
 
-    price:550,
+{
+id:2,
+code:"A2",
+name:"شوز طبي",
+category:"medical",
+tags:["shoes","medical"],
+description:"شوز طبي مريح وخفيف، مناسب للاستخدام اليومي بتصميم عملي وشيك.",
+price:550,
+image:imageURL("IMG_098.png"),
 
-    image:imageURL("IMG_0991.png"),
+colors:[
+{name:"بيج",image:imageURL("IMG_098.png")},
+{name:"أسود",image:imageURL("IMG_099.png")},
+{name:"كافيه",image:imageURL("IMG_1001.png")}
+],
 
-    colors:[
-      {
-        name:"هافان",
-        image:imageURL("IMG_0991.png")
-      },
-      {
-        name:"كافيه",
-        image:imageURL("IMG_0993.png")
-      },
-      {
-        name:"أسود",
-        image:imageURL("IMG_0992.png")
-      }
-    ],
-
-    sizes:[
-      "39",
-      "40",
-      "41",
-      "42",
-      "43"
-    ],
-
-    badge:"جديد"
-  },
-
-
-  {
-    id:2,
-    code:"A2",
-    name:"شوز طبي",
-    category:"medical",
-
-    tags:[
-      "shoes",
-      "medical"
-    ],
-
-    description:
-      "شوز طبي مريح وخفيف، مناسب للاستخدام اليومي بتصميم عملي وشيك.",
-
-    price:550,
-
-    image:imageURL("IMG_098.png"),
-
-    colors:[
-      {
-        name:"بيج",
-        image:imageURL("IMG_098.png")
-      },
-      {
-        name:"أسود",
-        image:imageURL("IMG_099.png")
-      },
-      {
-        name:"كافيه",
-        image:imageURL("IMG_1001.png")
-      }
-    ],
-
-    sizes:[
-      "38",
-      "39",
-      "40",
-      "41",
-      "42"
-    ],
-
-    badge:"طبي"
-  }
+sizes:["38","39","40","41","42"],
+badge:"طبي"
+}
 
 ];
 
+let currentProduct=null;
+let currentColor=null;
+let currentSize=null;
+let currentQty=1;
+let cart=[];
+let favorites=[];
+let currentCategory="all";
 
-/* ==============================
-   المتغيرات
-============================== */
+function renderProducts(list=products){
 
-let currentProduct = null;
-let currentColor = null;
-let currentSize = null;
-let currentQty = 1;
-let cart = [];
-let favorites = [];
-let currentCategory = "all";
+const grid=document.getElementById("productsGrid");
 
-
-/* ==============================
-   عرض المنتجات
-============================== */
-
-function renderProducts(list = products){
-
-  const grid =
-    document.getElementById("productsGrid");
-
-  if(!list.length){
-
-    grid.innerHTML =
-      `<div class="empty">
-        مفيش منتجات مطابقة للبحث 🔍
-      </div>`;
-
-    return;
-  }
-
-  grid.innerHTML = list.map(product => `
-
-    <div class="product-card">
-
-      <button
-        class="favorite ${
-          favorites.includes(product.id)
-          ? "active"
-          : ""
-        }"
-        onclick="toggleFavorite(${product.id},event)"
-      >
-        ${
-          favorites.includes(product.id)
-          ? "♥"
-          : "♡"
-        }
-      </button>
-
-      <div class="badge">
-        ${product.badge}
-      </div>
-
-      <img
-        class="product-image"
-        src="${product.image}"
-        alt="${product.name}"
-        onclick="openProduct(${product.id})"
-      >
-
-      <div class="product-info">
-
-        <div class="product-code">
-          كود المنتج: ${product.code}
-        </div>
-
-        <div class="product-name">
-          ${product.name}
-        </div>
-
-        <div class="product-desc">
-          ${product.description}
-        </div>
-
-        <div class="product-bottom">
-
-          <div class="price">
-            ${product.price} جنيه
-          </div>
-
-          <button
-            class="view-btn"
-            onclick="openProduct(${product.id})"
-          >
-            التفاصيل
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `).join("");
-
+if(!list.length){
+grid.innerHTML='<div class="empty">مفيش منتجات مطابقة للبحث 🔍</div>';
+return;
 }
 
+grid.innerHTML=list.map(product=>`
 
-/* ==============================
-   التصنيف
-============================== */
+<div class="product-card">
+
+<button class="favorite ${favorites.includes(product.id)?"active":""}" onclick="toggleFavorite(${product.id},event)">
+${favorites.includes(product.id)?"♥":"♡"}
+</button>
+
+<div class="badge">${product.badge}</div>
+
+<img
+class="product-image"
+src="${product.image}"
+alt="${product.name}"
+onclick="openProduct(${product.id})"
+>
+
+<div class="product-info">
+
+<div class="product-code">
+كود المنتج: ${product.code}
+</div>
+
+<div class="product-name">
+${product.name}
+</div>
+
+<div class="product-desc">
+${product.description}
+</div>
+
+<div class="product-bottom">
+
+<div class="price">
+${product.price} جنيه
+</div>
+
+<button class="view-btn" onclick="openProduct(${product.id})">
+التفاصيل
+</button>
+
+</div>
+</div>
+</div>
+
+`).join("");
+}
 
 function filterCategory(category,button){
 
-  currentCategory = category;
+currentCategory=category;
 
-  document
-    .querySelectorAll(".cat-btn")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
+document.querySelectorAll(".cat-btn").forEach(btn=>{
+btn.classList.remove("active");
+});
 
-  button.classList.add("active");
+button.classList.add("active");
 
-  applyFilters();
+applyFilters();
 }
-
-
-/* ==============================
-   البحث
-============================== */
 
 function searchProducts(){
-  applyFilters();
+applyFilters();
 }
-
 
 function applyFilters(){
 
-  const search =
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
+const search=document.getElementById("searchInput").value.trim().toLowerCase();
 
-  const filtered =
-    products.filter(product => {
+const filtered=products.filter(product=>{
 
-      let categoryMatch = true;
+let categoryMatch=true;
 
-      if(currentCategory !== "all"){
+if(currentCategory!=="all"){
 
-        if(currentCategory === "new"){
-
-          categoryMatch =
-            product.tags.includes("new");
-
-        }
-
-        else if(currentCategory === "discount"){
-
-          categoryMatch =
-            product.tags.includes("discount");
-
-        }
-
-        else{
-
-          categoryMatch =
-            product.tags.includes(
-              currentCategory
-            );
-
-        }
-      }
-
-      const text =
-        (
-          product.name +
-          " " +
-          product.code +
-          " " +
-          product.description
-        ).toLowerCase();
-
-      const searchMatch =
-        !search ||
-        text.includes(search);
-
-      return categoryMatch &&
-             searchMatch;
-
-    });
-
-  renderProducts(filtered);
+if(currentCategory==="new"){
+categoryMatch=product.tags.includes("new");
 }
 
+else if(currentCategory==="discount"){
+categoryMatch=product.tags.includes("discount");
+}
 
-/* ==============================
-   المفضلة
-============================== */
+else{
+categoryMatch=product.tags.includes(currentCategory);
+}
+
+}
+
+const text=(product.name+" "+product.code+" "+product.description).toLowerCase();
+
+const searchMatch=!search || text.includes(search);
+
+return categoryMatch && searchMatch;
+
+});
+
+renderProducts(filtered);
+}
 
 function toggleFavorite(id,event){
 
-  event.stopPropagation();
+event.stopPropagation();
 
-  if(favorites.includes(id)){
-
-    favorites =
-      favorites.filter(x => x !== id);
-
-  }
-
-  else{
-
-    favorites.push(id);
-
-  }
-
-  applyFilters();
+if(favorites.includes(id)){
+favorites=favorites.filter(x=>x!==id);
+}
+else{
+favorites.push(id);
 }
 
-
-/* ==============================
-   فتح المنتج
-============================== */
+applyFilters();
+}
 
 function openProduct(id){
 
-  currentProduct =
-    products.find(
-      product => product.id === id
-    );
+currentProduct=products.find(product=>product.id===id);
 
-  if(!currentProduct)
-    return;
+if(!currentProduct)return;
 
-  currentColor =
-    currentProduct.colors[0];
+currentColor=currentProduct.colors[0];
+currentSize=null;
+currentQty=1;
 
-  currentSize = null;
-  currentQty = 1;
+document.getElementById("modalTitle").textContent=currentProduct.name;
+document.getElementById("modalCode").textContent="كود المنتج: "+currentProduct.code;
+document.getElementById("modalDesc").textContent=currentProduct.description;
+document.getElementById("modalPrice").textContent=currentProduct.price+" جنيه";
+document.getElementById("qtyNumber").textContent=currentQty;
 
-  document.getElementById("modalTitle")
-    .textContent =
-      currentProduct.name;
+renderColorOptions();
+renderSizeOptions();
 
-  document.getElementById("modalCode")
-    .textContent =
-      "كود المنتج: " +
-      currentProduct.code;
-
-  document.getElementById("modalDesc")
-    .textContent =
-      currentProduct.description;
-
-  document.getElementById("modalPrice")
-    .textContent =
-      currentProduct.price +
-      " جنيه";
-
-  document.getElementById("qtyNumber")
-    .textContent =
-      currentQty;
-
-  renderColorOptions();
-  renderSizeOptions();
-
-  document
-    .getElementById("productOverlay")
-    .classList.add("show");
+document.getElementById("productOverlay").classList.add("show");
 }
-
 
 function closeProduct(){
-
-  document
-    .getElementById("productOverlay")
-    .classList.remove("show");
-
+document.getElementById("productOverlay").classList.remove("show");
 }
-
-
-/* ==============================
-   الألوان
-============================== */
 
 function renderColorOptions(){
 
-  document.getElementById("modalImage")
-    .src =
-      currentColor.image;
+document.getElementById("modalImage").src=currentColor.image;
 
-  document.getElementById("colorOptions")
-    .innerHTML =
+document.getElementById("colorOptions").innerHTML=currentProduct.colors.map((color,index)=>`
 
-      currentProduct.colors
-        .map((color,index) => `
+<button
+class="option ${currentColor.name===color.name?"active":""}"
+onclick="selectColor(${index})"
+>
+${color.name}
+</button>
 
-          <button
-            class="option ${
-              currentColor.name === color.name
-              ? "active"
-              : ""
-            }"
-            onclick="selectColor(${index})"
-          >
-            ${color.name}
-          </button>
-
-        `)
-        .join("");
+`).join("");
 }
-
 
 function selectColor(index){
 
-  currentColor =
-    currentProduct.colors[index];
+currentColor=currentProduct.colors[index];
 
-  renderColorOptions();
-
+renderColorOptions();
 }
-
-
-/* ==============================
-   المقاسات
-============================== */
 
 function renderSizeOptions(){
 
-  document.getElementById("sizeOptions")
-    .innerHTML =
+document.getElementById("sizeOptions").innerHTML=currentProduct.sizes.map(size=>`
 
-      currentProduct.sizes
-        .map(size => `
+<button
+class="option ${currentSize===size?"active":""}"
+onclick="selectSize('${size}')"
+>
+${size}
+</button>
 
-          <button
-            class="option ${
-              currentSize === size
-              ? "active"
-              : ""
-            }"
-            onclick="selectSize('${size}')"
-          >
-            ${size}
-          </button>
-
-        `)
-        .join("");
+`).join("");
 }
-
 
 function selectSize(size){
 
-  currentSize = size;
+currentSize=size;
 
-  renderSizeOptions();
-
+renderSizeOptions();
 }
-
-
-/* ==============================
-   الكمية
-============================== */
 
 function changeQty(amount){
 
-  currentQty += amount;
+currentQty+=amount;
 
-  if(currentQty < 1)
-    currentQty = 1;
+if(currentQty<1)currentQty=1;
+if(currentQty>20)currentQty=20;
 
-  if(currentQty > 20)
-    currentQty = 20;
-
-  document.getElementById("qtyNumber")
-    .textContent =
-      currentQty;
+document.getElementById("qtyNumber").textContent=currentQty;
 }
-
-
-/* ==============================
-   إضافة للسلة
-============================== */
 
 function addCurrentProductToCart(){
 
-  if(!currentProduct)
-    return;
+if(!currentProduct)return;
 
-  if(!currentSize){
+if(!currentSize){
+alert("اختار المقاس الأول 👟");
+return;
+}
 
-    alert("اختار المقاس الأول 👟");
+const existing=cart.find(item=>
+item.productId===currentProduct.id &&
+item.color===currentColor.name &&
+item.size===currentSize
+);
 
-    return;
-  }
+if(existing){
+existing.quantity+=currentQty;
+}
 
-  const existing =
-    cart.find(item =>
+else{
 
-      item.productId === currentProduct.id &&
-      item.color === currentColor.name &&
-      item.size === currentSize
+cart.push({
 
-    );
+productId:currentProduct.id,
+code:currentProduct.code,
+name:currentProduct.name,
+color:currentColor.name,
+size:currentSize,
+quantity:currentQty,
+price:currentProduct.price,
+image:currentColor.image
 
-  if(existing){
-
-    existing.quantity += currentQty;
-
-  }
-
-  else{
-
-    cart.push({
-
-      productId:
-        currentProduct.id,
-
-      code:
-        currentProduct.code,
-
-      name:
-        currentProduct.name,
-
-      color:
-        currentColor.name,
-
-      size:
-        currentSize,
-
-      quantity:
-        currentQty,
-
-      price:
-        currentProduct.price,
-
-      image:
-        currentColor.image
-
-    });
-
-  }
-
-  updateCartCount();
-  closeProduct();
-  openCart();
+});
 
 }
 
-
-/* ==============================
-   السلة
-============================== */
+updateCartCount();
+closeProduct();
+openCart();
+}
 
 function updateCartCount(){
 
-  const count =
-    cart.reduce(
-      (total,item) =>
-        total + item.quantity,
-      0
-    );
+const count=cart.reduce((total,item)=>total+item.quantity,0);
 
-  document.getElementById("cartCount")
-    .textContent =
-      count;
+document.getElementById("cartCount").textContent=count;
 }
-
 
 function openCart(){
 
-  renderCart();
+renderCart();
 
-  document
-    .getElementById("cartOverlay")
-    .classList.add("show");
-
+document.getElementById("cartOverlay").classList.add("show");
 }
-
 
 function closeCart(){
 
-  document
-    .getElementById("cartOverlay")
-    .classList.remove("show");
-
+document.getElementById("cartOverlay").classList.remove("show");
 }
-
 
 function renderCart(){
 
-  const list =
-    document.getElementById("cartList");
+const list=document.getElementById("cartList");
 
-  if(!cart.length){
+if(!cart.length){
 
-    list.innerHTML =
-      `<div class="empty" style="padding:30px 0;">
-        السلة فاضية 🛒
-      </div>`;
+list.innerHTML='<div class="empty" style="padding:30px 0;">السلة فاضية 🛒</div>';
 
-    document.getElementById("cartTotal")
-      .textContent =
-        "0 جنيه";
+document.getElementById("cartTotal").textContent="0 جنيه";
 
-    return;
-  }
-
-  list.innerHTML =
-
-    cart.map((item,index) => `
-
-      <div class="cart-item">
-
-        <img
-          class="cart-thumb"
-          src="${item.image}"
-          alt="${item.name}"
-        >
-
-        <div class="cart-info">
-
-          <div class="cart-code">
-            ${item.code}
-          </div>
-
-          <div class="cart-name">
-            ${item.name}
-          </div>
-
-          <div class="cart-details">
-            اللون: ${item.color}<br>
-            المقاس: ${item.size}<br>
-            الكمية: ${item.quantity}
-          </div>
-
-        </div>
-
-        <div>
-
-          <div class="cart-total">
-            ${
-              item.price *
-              item.quantity
-            }
-            جنيه
-          </div>
-
-          <button
-            class="delete-btn"
-            onclick="removeFromCart(${index})"
-          >
-            🗑️
-          </button>
-
-        </div>
-
-      </div>
-
-    `).join("");
-
-  document.getElementById("cartTotal")
-    .textContent =
-      getCartTotal() +
-      " جنيه";
+return;
 }
 
+list.innerHTML=cart.map((item,index)=>`
+
+<div class="cart-item">
+
+<img class="cart-thumb" src="${item.image}" alt="${item.name}">
+
+<div class="cart-info">
+
+<div class="cart-code">${item.code}</div>
+
+<div class="cart-name">${item.name}</div>
+
+<div class="cart-details">
+اللون: ${item.color}<br>
+المقاس: ${item.size}<br>
+الكمية: ${item.quantity}
+</div>
+
+</div>
+
+<div>
+
+<div class="cart-total">
+${item.price*item.quantity} جنيه
+</div>
+
+<button class="delete-btn" onclick="removeFromCart(${index})">
+🗑️
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+document.getElementById("cartTotal").textContent=getCartTotal()+" جنيه";
+}
 
 function removeFromCart(index){
 
-  cart.splice(index,1);
+cart.splice(index,1);
 
-  updateCartCount();
-  renderCart();
-
+updateCartCount();
+renderCart();
 }
-
 
 function getCartTotal(){
 
-  return cart.reduce(
-    (total,item) =>
-      total +
-      item.price *
-      item.quantity,
-    0
-  );
-
+return cart.reduce((total,item)=>
+total+item.price*item.quantity,0
+);
 }
-
-
-/* ==============================
-   إتمام الطلب
-============================== */
 
 function openCheckout(){
 
-  if(!cart.length){
+if(!cart.length){
 
-    alert(
-      "السلة فاضية، اختار منتج الأول 🛒"
-    );
+alert("السلة فاضية، اختار منتج الأول 🛒");
 
-    return;
-  }
-
-  renderCheckoutSummary();
-  closeCart();
-
-  document
-    .getElementById("checkoutOverlay")
-    .classList.add("show");
-
+return;
 }
 
+renderCheckoutSummary();
+closeCart();
+
+document.getElementById("checkoutOverlay").classList.add("show");
+}
 
 function closeCheckout(){
 
-  document
-    .getElementById("checkoutOverlay")
-    .classList.remove("show");
-
+document.getElementById("checkoutOverlay").classList.remove("show");
 }
-
 
 function renderCheckoutSummary(){
 
-  const summary =
-    document.getElementById(
-      "checkoutSummary"
-    );
+const summary=document.getElementById("checkoutSummary");
 
-  summary.innerHTML = `
+summary.innerHTML=`
 
-    <div
-      style="
-        font-weight:bold;
-        margin-bottom:8px;
-      "
-    >
-      تفاصيل الطلب
-    </div>
+<div style="font-weight:bold;margin-bottom:8px;">
+تفاصيل الطلب
+</div>
 
-    ${
-      cart.map(item => `
+${cart.map(item=>`
 
-        <div class="summary-item">
+<div class="summary-item">
 
-          <img
-            class="summary-thumb"
-            src="${item.image}"
-            alt="${item.name}"
-          >
+<img class="summary-thumb" src="${item.image}" alt="${item.name}">
 
-          <div class="summary-text">
+<div class="summary-text">
 
-            <strong>
-              ${item.code} —
-              ${item.name}
-            </strong>
+<strong>
+${item.code} — ${item.name}
+</strong>
 
-            <br>
+<br>
 
-            اللون:
-            ${item.color}
+اللون: ${item.color}
 
-            <br>
+<br>
 
-            المقاس:
-            ${item.size}
+المقاس: ${item.size}
 
-            <br>
+<br>
 
-            الكمية:
-            ${item.quantity}
+الكمية: ${item.quantity}
 
-            <br>
+<br>
 
-            السعر:
-            ${
-              item.price *
-              item.quantity
-            }
-            جنيه
+السعر: ${item.price*item.quantity} جنيه
 
-          </div>
+</div>
 
-        </div>
+</div>
 
-      `).join("")
-    }
+`).join("")}
 
-    <div
-      style="
-        text-align:center;
-        font-weight:bold;
-        margin-top:12px;
-      "
-    >
-      الإجمالي:
-      ${getCartTotal()}
-      جنيه
-    </div>
+<div style="text-align:center;font-weight:bold;margin-top:12px;">
+الإجمالي: ${getCartTotal()} جنيه
+</div>
 
-  `;
+`;
 }
-
-
-/* ==============================
-   إرسال واتساب
-============================== */
 
 function sendOrder(){
 
-  if(!cart.length){
+if(!cart.length){
 
-    alert("السلة فاضية");
+alert("السلة فاضية");
 
-    return;
-  }
+return;
+}
 
-  const name =
-    document
-      .getElementById("customerName")
-      .value
-      .trim();
+const name=document.getElementById("customerName").value.trim();
 
-  const phone =
-    document
-      .getElementById("customerPhone")
-      .value
-      .trim();
+const phone=document.getElementById("customerPhone").value.trim();
 
-  const governorate =
-    document
-      .getElementById("customerGovernorate")
-      .value;
+const governorate=document.getElementById("customerGovernorate").value;
 
-  const address =
-    document
-      .getElementById("customerAddress")
-      .value
-      .trim();
+const address=document.getElementById("customerAddress").value.trim();
 
-  const notes =
-    document
-      .getElementById("customerNotes")
-      .value
-      .trim();
+const notes=document.getElementById("customerNotes").value.trim();
 
-  if(!name){
+if(!name){
+alert("اكتب الاسم");
+return;
+}
 
-    alert("اكتب الاسم");
-    return;
-  }
+if(!phone){
+alert("اكتب رقم الموبايل");
+return;
+}
 
-  if(!phone){
+if(!governorate){
+alert("اختار المحافظة");
+return;
+}
 
-    alert("اكتب رقم الموبايل");
-    return;
-  }
+if(!address){
+alert("اكتب العنوان");
+return;
+}
 
-  if(!governorate){
-
-    alert("اختار المحافظة");
-    return;
-  }
-
-  if(!address){
-
-    alert("اكتب العنوان");
-    return;
-  }
-
-  let message =
-
-`🛍️ طلب جديد من موقع PARIS
+let message=`🛍️ طلب جديد من موقع PARIS
 
 📦 تفاصيل الطلب:
 `;
 
-  cart.forEach((item,index) => {
+cart.forEach((item,index)=>{
 
-    message += `
+message+=`
 
-${index + 1}) ${item.code} — ${item.name}
+${index+1}) ${item.code} — ${item.name}
 اللون: ${item.color}
 المقاس: ${item.size}
 الكمية: ${item.quantity}
-السعر: ${
-      item.price *
-      item.quantity
-    } جنيه
+السعر: ${item.price*item.quantity} جنيه
 
 🖼️ صورة المنتج:
-${window.location.origin}${window.location.pathname}${item.image.replace("./","")}
+${item.image}
 `;
 
-  });
+});
 
-  message += `
+message+=`
 
 💰 إجمالي الطلب:
 ${getCartTotal()} جنيه
@@ -1806,28 +839,16 @@ ${governorate}
 ${address}
 
 📝 ملاحظات:
-${notes || "لا يوجد"}
+${notes||"لا يوجد"}
 
 PARIS SHOES & BAGS
 📍 شارع إسكندرية - مرسى مطروح
 `;
 
-  const url =
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    encodeURIComponent(message);
+const url="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message);
 
-  window.open(
-    url,
-    "_blank"
-  );
+window.open(url,"_blank");
 }
-
-
-/* ==============================
-   تشغيل الموقع
-============================== */
 
 renderProducts();
 updateCartCount();
