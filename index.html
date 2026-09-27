@@ -303,9 +303,14 @@ PARIS
 
 const WHATSAPP = "201098251580";
 
-/* الصور من GitHub مباشرة */
-function imageURL(file){
-return "https://raw.githubusercontent.com/mnntpk6tkd-droid/Paris---shoes---bags/main/" + encodeURIComponent(file);
+/* صور A1 من الملفات الموجودة في الريبو الرئيسي */
+function rootImage(file){
+return "https://mnntpk6tkd-droid.github.io/Paris---shoes---bags/"+file;
+}
+
+/* صور A2 من فولدر images */
+function a2Image(file){
+return "images/"+file;
 }
 
 const products = [
@@ -318,12 +323,12 @@ category:"medical",
 tags:["shoes","medical","new"],
 description:"خفيف ومريح جدًا، مناسب للاستخدام اليومي بتصميم شيك وفورمال.",
 price:550,
-image:imageURL("IMG_0991.png"),
+image:rootImage("IMG_0991.png"),
 
 colors:[
-{name:"هافان",image:imageURL("IMG_0991.png")},
-{name:"كافيه",image:imageURL("IMG_0993.png")},
-{name:"أسود",image:imageURL("IMG_0992.png")}
+{name:"هافان",image:rootImage("IMG_0991.png")},
+{name:"كافيه",image:rootImage("IMG_0993.png")},
+{name:"أسود",image:rootImage("IMG_0992.png")}
 ],
 
 sizes:["39","40","41","42","43"],
@@ -338,12 +343,14 @@ category:"medical",
 tags:["shoes","medical"],
 description:"شوز طبي مريح وخفيف، مناسب للاستخدام اليومي بتصميم عملي وشيك.",
 price:550,
-image:imageURL("IMG_098.png"),
+
+/* A2 - الصور من فولدر images */
+image:a2Image("IMG_098.png"),
 
 colors:[
-{name:"بيج",image:imageURL("IMG_098.png")},
-{name:"أسود",image:imageURL("IMG_099.png")},
-{name:"كافيه",image:imageURL("IMG_1001.png")}
+{name:"بيج",image:a2Image("IMG_098.png")},
+{name:"أسود",image:a2Image("IMG_099.png")},
+{name:"كافيه",image:a2Image("IMG_1001.png")}
 ],
 
 sizes:["38","39","40","41","42"],
