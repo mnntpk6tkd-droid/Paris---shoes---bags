@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -314,6 +315,23 @@ header{
   background:#d4af37;
   border:1px solid #d4af37;
   color:#000;
+}
+
+/* DIRECT PRODUCT */
+
+.direct-product-title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.direct-product-title h2{
+  font-size:28px;
+  margin-bottom:5px;
+}
+
+.direct-product-title p{
+  color:#aaa;
+  font-size:14px;
 }
 
 /* WHY */
@@ -797,7 +815,7 @@ footer p{
 
 <section class="shop" id="shop">
 
-  <div class="section-title">
+  <div class="section-title" id="shopTitle">
 
     <h2>اختاري إطلالتك</h2>
 
@@ -808,7 +826,7 @@ footer p{
   </div>
 
 
-  <div class="search-box">
+  <div class="search-box" id="searchBox">
 
     <input
       type="text"
@@ -819,7 +837,7 @@ footer p{
   </div>
 
 
-  <div class="categories">
+  <div class="categories" id="categories">
 
     <button
       class="category-btn active"
@@ -1281,6 +1299,27 @@ const products = [
 
 
 /* =========================
+   DIRECT PRODUCT MODE
+========================= */
+
+const urlParams =
+  new URLSearchParams(window.location.search);
+
+const directProductCode =
+  urlParams.get("product");
+
+const directProduct =
+  products.find(
+    product =>
+      product.code.toLowerCase() ===
+      (directProductCode || "").toLowerCase()
+  );
+
+const directProductMode =
+  !!directProduct;
+
+
+/* =========================
    VARIABLES
 ========================= */
 
@@ -1342,32 +1381,46 @@ function renderProducts(){
   const container=
     document.getElementById("products");
 
+  const searchInput=
+    document.getElementById("searchInput");
+
   const search=
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
+    searchInput
+      ? searchInput.value.trim().toLowerCase()
+      : "";
 
 
-  const filtered=
-    products.filter(product=>{
+  let filtered;
 
-      const categoryMatch=
-        currentCategory==="all" ||
-        product.category===currentCategory;
 
-      const searchMatch=
-        product.name
-          .toLowerCase()
-          .includes(search) ||
-        product.code
-          .toLowerCase()
-          .includes(search);
+  /* لو اللينك خاص بمنتج معين */
 
-      return categoryMatch && searchMatch;
+  if(directProductMode){
 
-    });
+    filtered=[directProduct];
+
+  }else{
+
+    filtered=
+      products.filter(product=>{
+
+        const categoryMatch=
+          currentCategory==="all" ||
+          product.category===currentCategory;
+
+        const searchMatch=
+          product.name
+            .toLowerCase()
+            .includes(search) ||
+          product.code
+            .toLowerCase()
+            .includes(search);
+
+        return categoryMatch && searchMatch;
+
+      });
+
+  }
 
 
   if(filtered.length===0){
@@ -1452,6 +1505,10 @@ function renderProducts(){
 
 
 function filterCategory(category,button){
+
+  if(directProductMode){
+    return;
+  }
 
   currentCategory=category;
 
@@ -1776,527 +1833,5 @@ function renderCart(){
   if(cart.length===0){
 
     container.innerHTML=`
-      <div class="empty">
-        السلة فاضية حاليًا 🛍️
-      </div>
-    `;
-
-    bottom.innerHTML="";
-
-    return;
-
-  }
-
-
-  container.innerHTML=
-    cart.map((item,index)=>{
-
-      const total=
-        item.price*item.quantity;
-
-      return `
-
-        <div class="cart-item">
-
-          <div class="cart-item-info">
-
-            <div class="cart-item-code">
-              موديل ${item.code}
-            </div>
-
-            <div class="cart-item-name">
-              ${item.name}
-            </div>
-
-            <div class="cart-item-meta">
-              اللون: ${item.color}
-              <br>
-              المقاس: ${item.size}
-              <br>
-              الكمية: ${item.quantity}
-            </div>
-
-            <button
-              class="remove-item"
-              onclick="removeCartItem(${index})">
-              حذف
-            </button>
-
-          </div>
-
-          <div class="cart-item-price">
-            ${total} جنيه
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-
-  const grandTotal=
-    cart.reduce(
-      (total,item)=>
-        total+
-        item.price*item.quantity,
-      0
-    );
-
-
-  bottom.innerHTML=`
-
-    <div class="cart-total">
-
-      <span>
-        الإجمالي
-      </span>
-
-      <span style="color:#d4af37;">
-        ${grandTotal} جنيه
-      </span>
-
-    </div>
-
-    <button
-      class="full-btn"
-      onclick="startCheckout()">
-      إتمام الطلب
-    </button>
-
-  `;
-
-}
-
-
-/* =========================
-   CHECKOUT
-========================= */
-
-function startCheckout(){
-
-  if(cart.length===0)return;
-
-  renderCheckoutSummary();
-
-  closeCart();
-
-  document
-    .getElementById("checkoutOverlay")
-    .classList.add("show");
-
-}
-
-
-function closeCheckout(){
-
-  document
-    .getElementById("checkoutOverlay")
-    .classList.remove("show");
-
-}
-
-
-function renderCheckoutSummary(){
-
-  const container=
-    document.getElementById("checkoutSummary");
-
-
-  const total=
-    cart.reduce(
-      (sum,item)=>
-        sum+
-        item.price*item.quantity,
-      0
-    );
-
-
-  container.innerHTML=`
-
-    <div style="
-      background:#151515;
-      border:1px solid #292929;
-      border-radius:12px;
-      padding:12px;
-      margin-bottom:15px;
-    ">
-
-      ${cart.map(item=>`
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #292929;
-        ">
-
-          <strong>
-            موديل ${item.code} -
-            ${item.name}
-          </strong>
-
-          <div style="color:#aaa;font-size:12px;">
-            اللون: ${item.color}
-            -
-            المقاس: ${item.size}
-            -
-            الكمية: ${item.quantity}
-          </div>
-
-          <div style="color:#d4af37;">
-            ${item.price*item.quantity} جنيه
-          </div>
-
-        </div>
-
-      `).join("")}
-
-
-      <div style="
-        display:flex;
-        justify-content:space-between;
-        padding-top:12px;
-        font-weight:bold;
-        font-size:18px;
-      ">
-
-        <span>
-          الإجمالي
-        </span>
-
-        <span style="color:#d4af37;">
-          ${total} جنيه
-        </span>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================
-   SEND WHATSAPP
-========================= */
-
-document
-  .getElementById("checkoutForm")
-  .addEventListener("submit",function(event){
-
-    event.preventDefault();
-
-
-    if(cart.length===0)return;
-
-
-    const name=
-      document
-        .getElementById("customerName")
-        .value.trim();
-
-
-    const phone=
-      document
-        .getElementById("customerPhone")
-        .value.trim();
-
-
-    const governorate=
-      document
-        .getElementById("customerGovernorate")
-        .value.trim();
-
-
-    const address=
-      document
-        .getElementById("customerAddress")
-        .value.trim();
-
-
-    const notes=
-      document
-        .getElementById("customerNotes")
-        .value.trim();
-
-
-    if(
-      !name ||
-      !phone ||
-      !governorate ||
-      !address
-    ){
-
-      alert("من فضلك كملي بيانات الطلب.");
-
-      return;
-
-    }
-
-
-    const orderNumber=
-      "PARIS-" +
-      Date.now()
-        .toString()
-        .slice(-6);
-
-
-    const total=
-      cart.reduce(
-        (sum,item)=>
-          sum+
-          item.price*item.quantity,
-        0
-      );
-
-
-    let message="";
-
-
-    message+="🛍️ *طلب جديد من موقع PARIS*";
-
-    message+="\n";
-
-    message+="\n";
-
-    message+="🔢 رقم الطلب: "+orderNumber;
-
-    message+="\n";
-
-    message+="━━━━━━━━━━━━━━";
-
-    message+="\n";
-
-    message+="👤 الاسم: "+name;
-
-    message+="\n";
-
-    message+="📱 الموبايل: "+phone;
-
-    message+="\n";
-
-    message+="📍 المحافظة: "+governorate;
-
-    message+="\n";
-
-    message+="🏠 العنوان: "+address;
-
-    message+="\n";
-
-
-    if(notes){
-
-      message+="📝 ملاحظات: "+notes;
-
-      message+="\n";
-
-    }
-
-
-    message+="\n";
-
-    message+="🛒 *تفاصيل الطلب*";
-
-    message+="\n";
-
-    message+="━━━━━━━━━━━━━━";
-
-    message+="\n";
-
-
-    cart.forEach((item,index)=>{
-
-      message+="\n";
-
-      message+=
-        (index+1)+
-        "️⃣ *الموديل: "+
-        item.code+
-        "*";
-
-      message+="\n";
-
-      message+=
-        "👠 المنتج: "+
-        item.name;
-
-      message+="\n";
-
-      message+=
-        "🎨 اللون: "+
-        item.color;
-
-      message+="\n";
-
-      message+=
-        "📏 المقاس: "+
-        item.size;
-
-      message+="\n";
-
-      message+=
-        "🔢 الكمية: "+
-        item.quantity;
-
-      message+="\n";
-
-      message+=
-        "💰 السعر: "+
-        (item.price*item.quantity)+
-        " جنيه";
-
-      message+="\n";
-
-    });
-
-
-    message+="\n";
-
-    message+="━━━━━━━━━━━━━━";
-
-    message+="\n";
-
-    message+=
-      "💵 *الإجمالي: "+
-      total+
-      " جنيه*";
-
-    message+="\n";
-
-    message+="\n";
-
-    message+="📦 توصيل لأي مكان في مصر";
-
-    message+="\n";
-
-    message+="✨ PARIS Shoes & Bags";
-
-
-    const whatsappNumber=
-      "201098251580";
-
-
-    const whatsappURL=
-      "https://wa.me/"+
-      whatsappNumber+
-      "?text="+
-      encodeURIComponent(message);
-
-
-    cart=[];
-
-    saveCart();
-
-    updateCartCount();
-
-    document
-      .getElementById("checkoutForm")
-      .reset();
-
-
-    closeCheckout();
-
-
-    document
-      .getElementById("orderNumber")
-      .textContent=
-      "رقم الطلب: "+orderNumber;
-
-
-    document
-      .getElementById("successOverlay")
-      .classList.add("show");
-
-
-    setTimeout(function(){
-
-      window.location.href=
-        whatsappURL;
-
-    },700);
-
-  });
-
-
-/* =========================
-   SUCCESS
-========================= */
-
-function closeSuccess(){
-
-  document
-    .getElementById("successOverlay")
-    .classList.remove("show");
-
-}
-
-
-/* =========================
-   GENERAL
-========================= */
-
-function scrollToShop(){
-
-  document
-    .getElementById("shop")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-document
-  .getElementById("productOverlay")
-  .addEventListener("click",function(event){
-
-    if(event.target===this){
-      closeProduct();
-    }
-
-  });
-
-
-document
-  .getElementById("cartOverlay")
-  .addEventListener("click",function(event){
-
-    if(event.target===this){
-      closeCart();
-    }
-
-  });
-
-
-document
-  .getElementById("checkoutOverlay")
-  .addEventListener("click",function(event){
-
-    if(event.target===this){
-      closeCheckout();
-    }
-
-  });
-
-
-document
-  .getElementById("successOverlay")
-  .addEventListener("click",function(event){
-
-    if(event.target===this){
-      closeSuccess();
-    }
-
-  });
-
-
-/* START */
-
-loadCart();
-
-renderProducts();
-
-</script>
-
-</body>
-</html>
+      <div c
+```
